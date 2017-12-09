@@ -103,26 +103,37 @@
             <hr style="margin: 50px 0">
 
           <h2>Introduction</h2>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. (Yi Lu, 2017)
-            <br>
-            <br>
-          When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
-          $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
-            <p>
-          
+          <p>How can a computer read a book? More importantly, how can a computer understand what it’s reading? </p>
+
+          <h3>Road Map</h3>
+          <p>Our review begins with describing the problem space of NLP with this very general question. We then introduce deep semantic analysis as an area of research inquiry that takes advantage of the recent leaps in computing from Neural Networks and deep learning to solve this problem. We dive into various approaches to address deep semantic analysis, splitting our article into the three main areas we saw in our literature review: Featurization, LSTMs, and CNNs. </p>
+
+          <h2>Featurization</h2>
+          <h3>Encoding Representations</h3>
+           <p>In the problem of Deep Sentiment analysis, we start with a text file with nothing but words, and we know there is latent structure and meaning in the ordering of them and the punctuation used to separate them. How do we encode this representation? NLP has created a variety of approaches to solve this problem:</p>
+            <ul>
+              <li>bag-of-words: keeps only the counts of each time each word appears, disregarding grammar and order </li>
+              <li>TF-IDF: an expansion on bag-of-words, TF-IDF reflects “importance” of a word in a corpus by creating a term frequency-inverse document frequency metric</li>
+              <li>n-gram: bag-of-words, but considers n words at a time </li>
+            </ul>
+          <h3>Word Embeddings</h3>
+           <p>Word embeddings are vector generated to represent words, usually trained using neural networks. This boosts performance for sentiment analysis immensely. Word2Vec is a Google package that uses 2-layer NNs and the skip-gram / CBOW algorithms to train embeddings.</p>
           <div class="text-center fig">
           <img src="img/3.png" class="img-center" width="800" />
           <br>
-          <small>Figure 1: Random test caption</small>
+          <small>Figure 1: Word2Vec Explanation</small>
           </div>
 
-          <h3>Subsection 1.1</h3>
-           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
-          <h2>Section 2</h2>
-           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
-          <h3>Subsection 1.1</h3>
-          <h2>Featurization</h2>
-          <h3>Subsection 1.1</h3>
+          <div class="text-center fig">
+          <img src="img/3.png" class="img-center" width="800" />
+          <br>
+          <small>Interactive Visualization</small>
+          </div>
+
+          <h3>Tensor-Related Models After Word2Vec (Maas et. al, Mikolov et. al)</h3>
+           <p>Maas presents a model that features metrics for semantic similarity and word sentiment on the IMDB dataset, and Mikolov presents a mathematical representation of skip-gram and bag-of-words models in a continuous space. </p>
+
+
           <h2>Recurrent Neural Nets</h2>
           <h3>Subsection 1.1</h3>
           <p>In the previous section we learned about word embeddings, and that this technique allows us to have a vector-based representation of words, which is able to capture the complex syntax and semantics of a language. Also, we know that classical Artificial Neural Networks (ANN) perform operations on vectors and matrices. So, how can we leverage this knowledge for sentiment analysis tasks?</p>
