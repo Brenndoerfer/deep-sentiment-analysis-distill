@@ -239,15 +239,48 @@
           <p></p>
           <h2>Convolutional Neural Nets</h2>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
-          <p>Drag the slider to display the current value.</p>
-          <div id="slidecontainerFirstLayer">
-            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-            <p>Value: <span id="firstLayerSliderVal"></span></p>
+          <p>Drag the slider to change the number of rows in the first and second filter.</p>
+          <div id="slidecontainer">
+            <input type="range" min="1" max="5" value="3" class="slider" id="firstFilter">
+            <p>Rows in first filter: <span id="numRow1"></span></p>
           </div>
-          <div id="slidecontainerSecondLayer">
-            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-            <p>Value: <span id="SecondLayerSliderVal"></span></p>
+
+          <div id="slidecontainer2">
+            <input type="range" min="1" max="3" value="2" class="slider" id="secFilter">
+            <p>Rows in second filter: <span id="numRow2"></span></p>
           </div>
+          <img id="img" src="img/conv_interact/32.jpg"/>
+          <script>
+          var slider1 = document.getElementById("firstFilter");
+          var slider2 = document.getElementById("secFilter");
+          var rows1 = document.getElementById("numRow1");
+          var rows2 = document.getElementById("numRow2");
+          var slide1val = slider1.value;
+          var slide2val = slider2.value;
+          rows1.innerHTML = slider1.value;
+          rows2.innerHTML = slider2.value;
+
+          function test(s1val, s2val){
+            rows1.innerHTML = slider1.value;
+            rows2.innerHTML = slider2.value;
+           document.getElementById("img").src="img/conv_interact/"+s1val+s2val+".jpg"
+              
+          }
+
+          slider2.oninput = function() {
+              slide2val = slider2.value
+              slide1val = slider1.value
+              test(slide1val, slide2val)
+             
+          }
+
+          slider1.oninput = function() {
+              slide2val = slider2.value
+              slide1val = slider1.value
+              test(slide1val, slide2val)
+          }
+
+          </script>
 
           <h3>Subsection 1.1</h3>
           <h2>References</h2>
