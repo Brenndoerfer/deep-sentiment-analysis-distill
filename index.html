@@ -124,27 +124,16 @@
           <small>Figure 1: Word2Vec Explanation</small>
           </div>
 
+          <p> For the default example, train the network by training the model for 500 iterations (pressing the green "500" button) and observing the relationship between "woman" and "queen" and "man" and "king". </p>
           <div hidden class="alert alert-danger" id="error"></div>
             <div class="row">
-              <div class="col-sm-4 no-padding">
+              <div class="col-sm-8 no-padding">
                 <div class="panel panel-default">
-                  <div class="panel-heading">Control Panel</div>
+                  <center> <div class="panel-heading">Neurons</div>
                   <div class="panel-body">
+                    <div id="neuron-vis"></div>
                     <div>
-                      <p>Config:</p>
-                      <textarea rows="4" id="config-text"></textarea>
-                    </div>
-                    <div>
-                      <p>Training data (context|target):</p>
-                      <textarea rows="4" id="input-text"></textarea>
-                    </div>
-                    <div>
-                      <p>Presets: <select id="sel-presets"></select></p>
-                      <button class="btn btn-primary" id="btn-restart">Update and Restart</button>
-                      <button class="btn btn-primary" id="btn-learning-rate">Update Learning Rate</button>
-                    </div>
-                    <hr>
-                    <div>
+                      <p> Training iterations:</p>
                       <div class="btn-group">
                         <button class="btn btn-success" id="btn-next">Next</button>
                         <button class="btn btn-success" id="btn-next20">20</button>
@@ -152,24 +141,49 @@
                         <button class="btn btn-success" id="btn-next500">500</button>
                         <button class="btn btn-success" id="btn-pca">PCA</button>
                       </div>
+                      <br>
+                      <br>
+                      <button class="btn btn-primary" id="btn-restart">Update and Restart</button>
+                      <button class="btn btn-primary" id="btn-learning-rate">Update Learning Rate</button>
+                      <br>
+                      <br>
+                    </div>
+                  </div>
+                </center>
+                </div>
+              </div>  <!-- end of top left-panel -->
+
+              <div class="col-sm-4 no-padding">
+                <div class="panel panel-default">
+                  <center><div class="panel-heading">Control Panel</div></center>
+                  <p><font size=-1>These are the visualization inputs! You can change the input data in "Training Data"
+                  and the number of hidden layers/learning rate in configurations.</font></p>
+                  <div class="panel-body">
+                    <div>
+                      <p>Neural Network Configurations:</p>
+                      <textarea rows="4" id="config-text"></textarea>
+                      <br>
+                    </div>
+                    <div>
+                      <p>Training data (context|target):</p>
+                      <textarea rows="4" id="input-text"></textarea>
+                      <br>
+                    </div>
+                    <div>
+                      <p>Presets: </p>
+                      <select id="sel-presets"></select>
+                      <br>
                     </div>
                   </div>
                 </div>
               </div> <!-- end of top left-panel -->
-              <div class="col-sm-8 no-padding">
-                <div class="panel panel-default">
-                  <div class="panel-heading">Neurons</div>
-                  <div class="panel-body">
-                    <div id="neuron-vis"></div>
-                  </div>
-                </div>
-              </div>  <!-- end of top right-panel -->
-            </div>  <!-- end of top row-->
 
+            </div>  <!-- end of top row-->
+            <hr>
             <div class="row">
               <div class="col-sm-6 no-padding">
                 <div class="panel panel-default">
-                  <div class="panel-heading">Weight Matrices</div>
+                  <center><div class="panel-heading">Weight Matrices</div></center>
                   <div class="panel-body">
                     <div id="heatmap-vis"></div>
                   </div>
@@ -177,7 +191,7 @@
               </div>  <!-- end of lower left panel-->
               <div class="col-sm-6 no-padding">
                 <div class="panel panel-default">
-                  <div class="panel-heading">Vectors</div>
+                  <center><div class="panel-heading">Vectors</div></center>
                   <div class="panel-body">
                     <div id="scatterplot-vis"></div>
                   </div>
@@ -203,7 +217,6 @@
 
 
           <h2>Recurrent Neural Nets</h2>
-          <h3>Subsection 1.1</h3>
           <p>In the previous section we learned about word embeddings, and that this technique allows us to have a vector-based representation of words, which is able to capture the complex syntax and semantics of a language. Also, we know that classical Artificial Neural Networks (ANN) perform operations on vectors and matrices. So, how can we leverage this knowledge for sentiment analysis tasks?</p>
           <p>In fact, sentences are just a sequence of words, and sentiment analysis is basically the task of classifying certain sequences of words as certain types of sentiment. Thus, we need to use a technique that allows us to process a sequence based input and assign a specific class. The solution is Recurrent Neural Networks (RNN). We will assume that you know what a regular, fully-connected feed-forward neural network is, and how it works. </p>
           <p>Classical neural networks are feed-forward networks that have inputs, potentially multiple hidden layers, and outputs. Such a feed-forward network can only take a certain window of words into consideration, whereas “recurrent neural networks can take into account all of the predecessor words” \cite{Sundermeyer}. This works because with RNNs, each element of the input sequence is assigned to a specific timestep of the RNN. This sequential approach allows the network to capture the temporal aspect of the input sequence. Fig.1 depicts the sequential input and processing. </p>
