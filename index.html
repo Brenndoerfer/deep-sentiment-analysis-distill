@@ -103,28 +103,120 @@
             <hr style="margin: 50px 0">
 
           <h2>Introduction</h2>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. (Yi Lu, 2017)
-            <br>
-            <br>
-          When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
-          $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
-            <p>
-          
+          <p>How can a computer read a book? More importantly, how can a computer understand what it’s reading? </p>
+
+          <h3>Road Map</h3>
+          <p>Our review begins with describing the problem space of NLP with this very general question. We then introduce deep semantic analysis as an area of research inquiry that takes advantage of the recent leaps in computing from Neural Networks and deep learning to solve this problem. We dive into various approaches to address deep semantic analysis, splitting our article into the three main areas we saw in our literature review: Featurization, LSTMs, and CNNs. </p>
+
+          <h2>Featurization</h2>
+          <h3>Encoding Representations</h3>
+           <p>In the problem of Deep Sentiment analysis, we start with a text file with nothing but words, and we know there is latent structure and meaning in the ordering of them and the punctuation used to separate them. How do we encode this representation? NLP has created a variety of approaches to solve this problem:</p>
+            <ul>
+              <li>bag-of-words: keeps only the counts of each time each word appears, disregarding grammar and order </li>
+              <li>TF-IDF: an expansion on bag-of-words, TF-IDF reflects “importance” of a word in a corpus by creating a term frequency-inverse document frequency metric</li>
+              <li>n-gram: bag-of-words, but considers n words at a time </li>
+            </ul>
+          <h3>Word Embeddings</h3>
+           <p>Word embeddings are vector generated to represent words, usually trained using neural networks. This boosts performance for sentiment analysis immensely. Word2Vec is a Google package that uses 2-layer NNs and the skip-gram / CBOW algorithms to train embeddings.</p>
           <div class="text-center fig">
           <img src="img/3.png" class="img-center" width="800" />
           <br>
-          <small>Figure 1: Random test caption</small>
+          <small>Figure 1: Word2Vec Explanation</small>
           </div>
 
-          <h3>Subsection 1.1</h3>
-           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
-          <h2>Section 2</h2>
-           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
-          <h3>Subsection 1.1</h3>
-          <h2>Featurization</h2>
-          <h3>Subsection 1.1</h3>
+          <p> For the default example, train the network by training the model for 500 iterations (pressing the green "500" button) and observing the relationship between "woman" and "queen" and "man" and "king". </p>
+          <div hidden class="alert alert-danger" id="error"></div>
+            <div class="row">
+              <div class="col-sm-8 no-padding">
+                <div class="panel panel-default">
+                  <center> <div class="panel-heading">Neurons</div>
+                  <div class="panel-body">
+                    <div id="neuron-vis"></div>
+                    <div>
+                      <p> Training iterations:</p>
+                      <div class="btn-group">
+                        <button class="btn btn-success" id="btn-next">Next</button>
+                        <button class="btn btn-success" id="btn-next20">20</button>
+                        <button class="btn btn-success" id="btn-next100">100</button>
+                        <button class="btn btn-success" id="btn-next500">500</button>
+                        <button class="btn btn-success" id="btn-pca">PCA</button>
+                      </div>
+                      <br>
+                      <br>
+                      <button class="btn btn-primary" id="btn-restart">Update and Restart</button>
+                      <button class="btn btn-primary" id="btn-learning-rate">Update Learning Rate</button>
+                      <br>
+                      <br>
+                    </div>
+                  </div>
+                </center>
+                </div>
+              </div>  <!-- end of top left-panel -->
+
+              <div class="col-sm-4 no-padding">
+                <div class="panel panel-default">
+                  <center><div class="panel-heading">Control Panel</div></center>
+                  <p><font size=-1>These are the visualization inputs! You can change the input data in "Training Data"
+                  and the number of hidden layers/learning rate in configurations.</font></p>
+                  <div class="panel-body">
+                    <div>
+                      <p>Neural Network Configurations:</p>
+                      <textarea rows="4" id="config-text"></textarea>
+                      <br>
+                    </div>
+                    <div>
+                      <p>Training data (context|target):</p>
+                      <textarea rows="4" id="input-text"></textarea>
+                      <br>
+                    </div>
+                    <div>
+                      <p>Presets: </p>
+                      <select id="sel-presets"></select>
+                      <br>
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- end of top left-panel -->
+
+            </div>  <!-- end of top row-->
+            <hr>
+            <div class="row">
+              <div class="col-sm-6 no-padding">
+                <div class="panel panel-default">
+                  <center><div class="panel-heading">Weight Matrices</div></center>
+                  <div class="panel-body">
+                    <div id="heatmap-vis"></div>
+                  </div>
+                </div>
+              </div>  <!-- end of lower left panel-->
+              <div class="col-sm-6 no-padding">
+                <div class="panel panel-default">
+                  <center><div class="panel-heading">Vectors</div></center>
+                  <div class="panel-body">
+                    <div id="scatterplot-vis"></div>
+                  </div>
+                </div>
+              </div>  <!-- end of lower-right panel-->
+            </div>  <!-- end of bottom row -->
+          <br>
+          <center><small>Figure 2: Interactive Embedding Visualization</small>
+          <br>
+          <small>Based on ronxin's Word Embedding Visual Inspector</small></center>
+          </div>  <!-- end of container -->
+
+          <script src="js/jquery-2.1.3.min.js"></script>
+          <script src="js/bootstrap.min.js"></script>
+          <script src="js/d3.v3.min.js"></script>
+          <script src="js/assert.js"></script>
+          <script src="js/pca.js"></script>
+          <script src="js/vector_math.js"></script>
+          <script src="js/toyw2v.js"></script>
+
+          <h3>Tensor-Related Models After Word2Vec (Maas et. al, Mikolov et. al)</h3>
+          <p>Maas presents a model that features metrics for semantic similarity and word sentiment on the IMDB dataset, and Mikolov presents a mathematical representation of skip-gram and bag-of-words models in a continuous space. </p>
+
+
           <h2>Recurrent Neural Nets</h2>
-          <h3>Subsection 1.1</h3>
           <p>In the previous section we learned about word embeddings, and that this technique allows us to have a vector-based representation of words, which is able to capture the complex syntax and semantics of a language. Also, we know that classical Artificial Neural Networks (ANN) perform operations on vectors and matrices. So, how can we leverage this knowledge for sentiment analysis tasks?</p>
           <p>In fact, sentences are just a sequence of words, and sentiment analysis is basically the task of classifying certain sequences of words as certain types of sentiment. Thus, we need to use a technique that allows us to process a sequence based input and assign a specific class. The solution is Recurrent Neural Networks (RNN). We will assume that you know what a regular, fully-connected feed-forward neural network is, and how it works. </p>
           <p>Classical neural networks are feed-forward networks that have inputs, potentially multiple hidden layers, and outputs. Such a feed-forward network can only take a certain window of words into consideration, whereas “recurrent neural networks can take into account all of the predecessor words” \cite{Sundermeyer}. This works because with RNNs, each element of the input sequence is assigned to a specific timestep of the RNN. This sequential approach allows the network to capture the temporal aspect of the input sequence. Fig.1 depicts the sequential input and processing. </p>
@@ -160,15 +252,48 @@
           <p></p>
           <h2>Convolutional Neural Nets</h2>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
-          <p>Drag the slider to display the current value.</p>
-          <div id="slidecontainerFirstLayer">
-            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-            <p>Value: <span id="firstLayerSliderVal"></span></p>
+          <p>Drag the slider to change the number of rows in the first and second filter.</p>
+          <div id="slidecontainer">
+            <input type="range" min="1" max="5" value="3" class="slider" id="firstFilter">
+            <p>Rows in first filter: <span id="numRow1"></span></p>
           </div>
-          <div id="slidecontainerSecondLayer">
-            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-            <p>Value: <span id="SecondLayerSliderVal"></span></p>
+
+          <div id="slidecontainer2">
+            <input type="range" min="1" max="3" value="2" class="slider" id="secFilter">
+            <p>Rows in second filter: <span id="numRow2"></span></p>
           </div>
+          <img id="img" src="img/conv_interact/32.jpg"/>
+          <script>
+          var slider1 = document.getElementById("firstFilter");
+          var slider2 = document.getElementById("secFilter");
+          var rows1 = document.getElementById("numRow1");
+          var rows2 = document.getElementById("numRow2");
+          var slide1val = slider1.value;
+          var slide2val = slider2.value;
+          rows1.innerHTML = slider1.value;
+          rows2.innerHTML = slider2.value;
+
+          function test(s1val, s2val){
+            rows1.innerHTML = slider1.value;
+            rows2.innerHTML = slider2.value;
+           document.getElementById("img").src="img/conv_interact/"+s1val+s2val+".jpg"
+              
+          }
+
+          slider2.oninput = function() {
+              slide2val = slider2.value
+              slide1val = slider1.value
+              test(slide1val, slide2val)
+             
+          }
+
+          slider1.oninput = function() {
+              slide2val = slider2.value
+              slide1val = slider1.value
+              test(slide1val, slide2val)
+          }
+
+          </script>
 
           <h3>Subsection 1.1</h3>
           <h2>References</h2>
