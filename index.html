@@ -31,6 +31,12 @@
       .cap {
         margin: 0 auto;
       }
+      h2 {
+        margin-top: 50px;
+      }
+      h3 {
+        margin-top: 20px;
+      }
     </style>
     <script type="text/javascript">
       
@@ -119,16 +125,36 @@
           <h3>Subsection 1.1</h3>
           <h2>Recurrent Neural Nets</h2>
           <h3>Subsection 1.1</h3>
-          <h2>Long Short-Term Memory</h2>
           <p>In the previous section we learned about word embeddings, and that this technique allows us to have a vector-based representation of words, which is able to capture the complex syntax and semantics of a language. Also, we know that classical Artificial Neural Networks (ANN) perform operations on vectors and matrices. So, how can we leverage this knowledge for sentiment analysis tasks?</p>
           <p>In fact, sentences are just a sequence of words, and sentiment analysis is basically the task of classifying certain sequences of words as certain types of sentiment. Thus, we need to use a technique that allows us to process a sequence based input and assign a specific class. The solution is Recurrent Neural Networks (RNN). We will assume that you know what a regular, fully-connected feed-forward neural network is, and how it works. </p>
           <p>Classical neural networks are feed-forward networks that have inputs, potentially multiple hidden layers, and outputs. Such a feed-forward network can only take a certain window of words into consideration, whereas “recurrent neural networks can take into account all of the predecessor words” \cite{Sundermeyer}. This works because with RNNs, each element of the input sequence is assigned to a specific timestep of the RNN. This sequential approach allows the network to capture the temporal aspect of the input sequence. Fig.1 depicts the sequential input and processing. </p>
+           <div class="text-center fig">
+          <img src="img/1.png" class="img-center" width="800" />
+          <br>
+          <small>Figure 1: Random test caption</small>
+          </div>
           <p>All the words in the sequence are highly dependent on each other. As depicted in Fig 3, every word is an input at a specific timestep of the sequence, and every timestep has a hidden state $h_t$ that tries to encode the previously-seen information. Additionally, at every timestep a weight matrix $W_X$, which is different for every timestep, gets multiplied with the current input $x_t$, where $x_t$ represents the current encoded word. $W^H$ is a recurrent weight matrix. This basically means that it stays the same, from the input to the output, but the weights still get updated at every timestep. The goal of $W_H$ is to encapsulate all information across all timesteps. The final hidden state is then fed into a softmax function, which gives a predicted class. The weight matrices within the RNN "are updated through an optimization process called backpropagation through time."</p>
           <p>Given the formula (Fig 3), used to compute the hidden state $h_t$ at every timestep $t$, we can identify two problems considering different value settings. For example, when $W^H$ has big values, and $W^X$ has small ones, $h_t$ is going to be significantly impacted by $H_(t-1)$. Non mathematically speaking, the current hidden state vector is not very dependent on the previous step. In the context of an input sequence of words, the current word would have no significant relationship to/ contextual dependence on the previous one.</p>
+          <div class="text-center fig">
+          <img src="img/3.png" class="img-center" width="800" />
+          <br>
+          <small>Figure 1: Random test caption</small>
+          </div>
+          
           <p>Thinking about the above-described situation and considering how backpropagation works (weights are updated based on the gradients of the error with respect to the current weight \cite{Hecht-Nielsen1989} ), we can identify two problems. If elements early in the sequence cause the value of the hidden state to become too big, this is going to over-saturate the gradient. This is  known as the exploding gradient problem, in which the elements will have an unproportionally high importance. The same thing can occur when a gradient is very small and converges to zero during backpropagation. This then causes the cell to die, known as the vanishing gradient problem. Due to this vanishing and exploding gradient problem, RNNs are harder to train than NNs. This problem also exists in feed-forward networks, but impacts RNNs even more because they are basically larger and deeper feed-forward networks with a cycle.</p>
+          
+          <h2>Long Short-Term Memory</h2>
           <p>Long Short-Term Memory (LSTM) is a recurrent neural network (RNN) architecture and was already proposed by Hofreiter in 1997. The idea is that the hidden states of the RNN get replaced by so-called LSTM modules, which have four different gates. These gates handle the in- and output, improving the vanishing and exploding gradient problem, as well as allowing the network to "encapsulate information about long-term dependencies in the text". The problem is that a regular RNN is not able to connect previously-occurring information to a later-occurring input. </p>
+          
           <p>As previously mentioned, the LSTM module has four components (sometimes referred to as gates), often denoted as input, output, and forget gate, as well as a memory module. The input is still denoted as $x_t$, but the LSTM requires $x_t$ and $h_(t-1)$ as input (the output of the previous state). The output will be the more complexly established hidden state $h_t$. Briefly speaking, "the input gate determines how much emphasis to put on each of the inputs, the forget gate determines the information that we'll throw away, and the output gate determines the final $h_t$ based on the intermediate states".</p>
+          
+          <div class="text-center fig">
+          <img src="img/4.png" class="img-center" width="800" />
+          <br>
+          <small>Figure 1: Random test caption</small>
+          </div>
           <p>additional gate explanation + graphics</p>
+
           <p>To conclude, deep sentiment analysis using LSTMs (or RNNs) consists of taking an input sequence and determining what kind of sentiment the text has. This could be simply determining if the input is positive or negative, or you could look at it in more detail, classifying into categories, such as funny, sad, angry, excited, etc.</p>
           <p></p>
           <p></p>
