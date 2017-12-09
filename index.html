@@ -46,6 +46,43 @@
 
   </head>
 
+  <style>
+#slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+</style>
+
   <body style="background-color: #eee">
     <div class="container" style="background-color: #fff; padding: 100px 150px;">
       <div class="row">
@@ -57,7 +94,7 @@
             UC Berkeley Department of Electrical Engineering and Computer Sciences (EECS)</p>
             <hr style="margin: 50px 0">
 
-          <h2>Section 1</h2>
+          <h2>Introduction</h2>
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. (Yi Lu, 2017)
             <br>
             <br>
@@ -76,11 +113,22 @@
           <h2>Section 2</h2>
            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
           <h3>Subsection 1.1</h3>
-          <h2>Section 3</h2>
+          <h2>Featurization</h2>
           <h3>Subsection 1.1</h3>
-          <h2>Section 4</h2>
+          <h2>Recurrent Neural Nets</h2>
           <h3>Subsection 1.1</h3>
-          <h2>Section 5</h2>
+          <h2>Convolutional Neural Nets</h2>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
+          <p>Drag the slider to display the current value.</p>
+          <div id="slidecontainerFirstLayer">
+            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+            <p>Value: <span id="firstLayerSliderVal"></span></p>
+          </div>
+          <div id="slidecontainerSecondLayer">
+            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+            <p>Value: <span id="SecondLayerSliderVal"></span></p>
+          </div>
+
           <h3>Subsection 1.1</h3>
           <h2>References</h2>
           <p>Felix A Gers, Nicol N Schraudolph, and Jürgen Schmidhuber. Learning Precise Timing with LSTM Recurrent Networks. Journal of Machine Learning Research, 3:115–143, 2002. URL http://machinelearning.wustl.edu/mlpapers/paper{_}files/GersSS02.pdf.</p>
