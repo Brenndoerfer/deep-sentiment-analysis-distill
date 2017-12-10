@@ -237,8 +237,18 @@
           <p>To conclude, deep sentiment analysis using LSTMs (or RNNs) consists of taking an input sequence and determining what kind of sentiment the text has. This could be simply determining if the input is positive or negative, or you could look at it in more detail, classifying into categories, such as funny, sad, angry, excited, etc.</p>
           <p></p>
           <p></p>
-          <h2>Convolutional Neural Nets</h2>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
+          <h2>Convolutional Neural Nets (CNN's)</h2>
+          <h3>Review of Convolutional Neural Nets</h3>
+          <p>Convolutional neural networks have proven to excel on computer vision tasks.[cite] While CNN's are most frequently associated with computer vision and image processing tasks, work has extended CNN’s to nlp tasks.[cite] CNN’s in their most basic form consist of convolutional layers, pooling layers, and fully connected layers.[cite ?]</p> 
+
+          <p>Convolutional layers relate the output of individual neurons to a local patch of the layer’s input by moving a filter, sometimes referred to as a kernel, across the layer's input. The filter consists of a matrix. The elements of the filter are multiplied elementwise by the values in patches of either the source image or the output of a previous layer, the resulting values of this multiplication are then summed and passed through a non-linear activation function. Multiple filters can be applied to each input, this results in a notion of channels where each channel represents the results of convolution with one filter.</p>  
+
+          <p>Pooling layers perform a downselect operation on the output of convolutional layers. These pooling operations amongst other things reduce computational cost, provide a sort of "smoothing" to layers, and in the case of images, contribute slightly to rotational invariance. 
+
+          Depending on the task, fully connected layers are often applied after pooling and convolutional layers. In the case of sentiment analysis, these fully connected layers would likeley also include layers with softmax or sigmoid activation in order to classify emoitons or otherwise quantify sentiment.  
+
+          CNN Techniques for Sentiment Analysis
+          .<p>
           <p>Drag the slider to change the number of rows in the first and second filter.</p>
           <div id="slidecontainer">
             <input type="range" min="1" max="5" value="3" class="slider" id="firstFilter">
