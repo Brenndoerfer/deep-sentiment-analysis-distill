@@ -19,6 +19,7 @@
     MathJax.Hub.Config({
       tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
     });
+
     </script>
     <style type="text/css">
         p {
@@ -50,8 +51,8 @@
         //            }, function () {
         //                $(this).css("background-color", "transparent");
         //            });
-//        })
-//        ;
+        //        })
+        //        ;
 
     </script>
 
@@ -247,23 +248,23 @@
             allows the network to capture the temporal aspect of the input sequence. Fig.1 depicts the sequential input and processing. </p>
 
         <div class="col-lg-12">
-        <div class="text-center fig col-lg-10">
-            <div class="seq-input">
-                <h3>Example input sequence</h3>
-                <div class="input-group mb-4">
+            <div class="text-center fig col-lg-10">
+                <div class="seq-input">
+                    <h3>Example input sequence</h3>
+                    <div class="input-group mb-4">
                   <span class="input-group-btn">
                     <button class="btn btn-secondary" type="button">Input sequence</button>
                   </span>
-                    <input type="text" class="form-control" placeholder="Sentence ..." id="in-sentence" style="min-width: 400px">
-                </div>
-                <div class="seq-output">
+                        <input type="text" class="form-control" placeholder="Sentence ..." id="in-sentence" style="min-width: 400px">
+                    </div>
+                    <div class="seq-output">
 
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
         <div class="text-center fig">
-        <small>Figure 1: Structure of an input sequence</small>
+            <small>Figure 1: Structure of an input sequence</small>
         </div>
 
         <p>All the words in the sequence are highly dependent on each other. As depicted in Fig 3, every word is an input at a specific timestep of the sequence, and every timestep has a hidden state $h_t$ that tries to encode the
@@ -273,6 +274,21 @@
         <p>Given the formula (Fig 3), used to compute the hidden state $h_t$ at every timestep $t$, we can identify two problems considering different value settings. For example, when $W^H$ has big values, and $W^X$ has small ones, $h_t$
             is going to be significantly impacted by $H_(t-1)$. Non mathematically speaking, the current hidden state vector is not very dependent on the previous step. In the context of an input sequence of words, the current word would
             have no significant relationship to/ contextual dependence on the previous one.</p>
+
+        <div class="col-lg-12">
+
+            <div class="block" style="float: left;">
+                <img src="img/a1.png" width="50" style="float: left; margin-top: 20px">
+                <div style="width: 50px; height: 60px; margin-left: 50px; background-color: #4CAF50;" class="text-center">$h_t$</div>
+                <img src="img/a2.png" width="50" style="float: left; margin-top: -20px">
+                <div style="width: 80px; height: 35px; margin-left: -30px; margin-top: 43px; background-color: #3faeed;" class="text-center">$x_{(t-1)}$</div>
+                <div style="width: 80px; height: 60px; margin-left: -30px; margin-top: 10px;" class="text-center">This</div>
+            </div>
+
+
+
+        </div>
+
         <div class="text-center fig">
             <img src="img/3.png" class="img-center" width="800"/>
             <br>
