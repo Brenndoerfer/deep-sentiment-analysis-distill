@@ -108,7 +108,7 @@
             <hr style="margin: 50px 0">
 
             <h2>Introduction</h2>
-            <p>How can a computer read a book? More importantly, how can a computer understand what it’s reading? </p>
+            <p>How can a computer read a book? More importantly, how can a computer understand what it’s reading and assign a sentiment? </p>
 
             <h3>Road Map</h3>
             <p>Our review begins with describing the problem space of NLP with this very general question. We then introduce deep semantic analysis as an area of research inquiry that takes advantage of the recent leaps in computing from
@@ -124,15 +124,10 @@
                 <li>TF-IDF: an expansion on bag-of-words, TF-IDF reflects “importance” of a word in a corpus by creating a term frequency-inverse document frequency metric</li>
                 <li>n-gram: bag-of-words, but considers n words at a time</li>
             </ul>
+            
             <h3>Word Embeddings</h3>
             <p>Word embeddings are vector generated to represent words, usually trained using neural networks. This boosts performance for sentiment analysis immensely. Word2Vec is a Google package that uses 2-layer NNs and the skip-gram /
                 CBOW algorithms to train embeddings.</p>
-            <div class="text-center fig">
-                <img src="img/3.png" class="img-center" width="800"/>
-                <br>
-                <small>Figure 1: Word2Vec Explanation</small>
-            </div>
-
             <p> For the default example, train the network by training the model for 500 iterations (pressing the green "500" button) and observing the relationship between "woman" and "queen" and "man" and "king". </p>
             <div hidden class="alert alert-danger" id="error"></div>
             <div class="row">
@@ -256,7 +251,6 @@
                 <div class="seq-output">
 
                 </div>
-<<<<<<< HEAD
             </div>
         </div>
         </div>
