@@ -129,26 +129,22 @@
 
             <h3>Road Map</h3>
             <p>Our review begins with describing the problem space of NLP with this very general question. We then introduce deep sentiment analysis as an area of research inquiry that takes advantage of the recent leaps in computing from
-                Neural Networks and deep learning to solve this problem. We dive into various approaches to address deep sentiment analysis, splitting our article into three main areas: how to represent text data (Featurization) and recent techniques in deep learning to derive sentiment-related insights (LSTMs and CNNs). </p>
+                Neural Networks and deep learning to solve this problem. We dive into various approaches to address deep sentiment analysis, splitting our article into three main areas: the many ways to represent text data (Featurization) and recent techniques in deep learning to procure sentiment-related insights (LSTMs and CNNs). </p>
 
             <h2>Featurization</h2>
             <h3>Encoding Representations</h3>
-            <p>In the research area of Deep Sentiment analysis, we start with a text file with nothing but words, and we know there is latent structure and meaning in their representation. We know that the ordering of words matters, the use of punctuation can convey strong feelings, and perhaps most importantly, word choice reveals a lot about sentiment. We also know that some words have positive or negative connotations with different levels of severity, and that words are related to each other in complex ways. How do we encode the plain text file that we recieve as relevant inputs to a deep learning model? NLP has created a variety of approaches to solve this problem:</p>
+            <p>In the research area of Deep Sentiment analysis, we start with a text file with nothing but words, and we know there is latent structure and meaning in their representation. We know that the ordering of words matters, the use of punctuation can convey strong feelings, and perhaps most importantly, word choice reveals a lot about sentiment. We also know that some words have positive or negative connotations with different levels of severity, and that words are related to each other in complex ways. How do we encode the plain text file that we recieve as relevant inputs to a deep learning model? NLP has created a variety of approaches to solve this problem.</p>
             <ul>
-                <li><b>bag-of-words</b>: This approach only keeps the counts of each time each word appears, disregarding the grammar and order of the input data. It makes the strong assumption that words are independent of each other, and that word frequencies reveal everything we need to know about content. While this seems like we're losing a lot of information, this approach performs remarkably well as a baseline.</li>
-                <li><b>TF-IDF</b>: This acronym expands to "Term Frequency - Inverse Document Frequency" and is an expansion on traditional bag-of-words approaches. TF-IDF reflects “importance” of a word in a corpus by creating a metric that's based on the name -- the frequency of the word appearing over the total number of times it's mentioned across all documents.</li>
-                <li><b>n-gram encoding</b>: This is another expansion of bag-of-words, but considers more than one word at a time. If n=1, we have the same thing as the bag-of-words approach. If n=2, we're considering combinations of two words as a unique term in our document. For example, consider the sentence "Vinitra, Michael, and Stefan went to the park." ["Vinitra", "Michael"] would be a bigram, ["Michael", "and"] would be another bigram, and so on. </li>
-                <li><b>stop word removal</b>: This is an addendum to previous techniques mentioned above, and involves removing words that theoretically don't hold much meaning (i.e. "the", "an", "and", etc.). This provides the advantage of reducing the number of unique words in your data, and therefore the dimensionality of your vocabulary. However, the disadvantage here (although not super relevant to the problem of sentiment analysis) is that you might lose some relevant information about author style. The number of quotation marks and stopwords can be used to predict time period of writing / gender of author / other descriptive metadata. </li>
+                <li><b>bag-of-words</b>: This approach only keeps the counts of each time each word appears, disregarding the grammar and order of the input data. It makes the strong assumption that words are independent of each other, and that word frequencies reveal everything we need to know about content. While this seems like we're losing a lot of information, this approach performs remarkably well as a baseline.</li><br>
+                <li><b>TF-IDF</b>: This acronym expands to "Term Frequency - Inverse Document Frequency" and is an expansion on traditional bag-of-words approaches. TF-IDF reflects “importance” of a word in a corpus by creating a metric that's based on the name -- the frequency of the word appearing over the total number of times it's mentioned across all documents.</li><br>
+                <li><b>n-gram encoding</b>: This is another expansion of bag-of-words, but considers more than one word at a time. If n=1, we have the same thing as the bag-of-words approach. If n=2, we're considering combinations of two words as a unique term in our document. For example, consider the sentence "Vinitra, Michael, and Stefan went to the park." ["Vinitra", "Michael"] would be a bigram, ["Michael", "and"] would be another bigram, and so on. </li><br>
+                <li><b>stop word removal</b>: This is an addendum to previous techniques mentioned above, and involves removing words that theoretically don't hold much meaning (i.e. "the", "an", "and", etc.). This provides the advantage of reducing the number of unique words in your data, and therefore the dimensionality of your vocabulary. However, the disadvantage here (although not super relevant to the problem of sentiment analysis) is that you might lose some relevant information about author style. The number of quotation marks and stopwords can be used to predict time period of writing / gender of author / other descriptive metadata. </li><br>
             </ul>
 
             <h3>Word Embeddings</h3>
+            <p>After determining the many ways to generate unique terms for our model, we result
             <p>Word embeddings are vector generated to represent words, usually trained using neural networks. This boosts performance for sentiment analysis immensely. Word2Vec is a Google package that uses 2-layer NNs and the skip-gram /
                 CBOW algorithms to train embeddings.</p>
-
-            <div class="text-center mt-5 mb-5">
-                <p>Tensorboard visualization</p>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/wPy-b7_IFtk" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-            </div>
 
             <p> For the default example, train the network by training the model for 500 iterations (pressing the green "500" button) and observing the relationship between "woman" and "queen" and "man" and "king". Then perform Principal
                 Component Analysis by pressing the "PCA" button. (This is just a way to reduce dimensions of our data and display them in relation to each other).</p>
@@ -233,9 +229,9 @@
             </div>  <!-- end of bottom row -->
             <br>
             <center>
-                <small>Figure 2: Interactive Embedding Visualization</small>
+                <small>Figure 1: Interactive Word Embedding Visualization</small>
                 <br>
-                <small>Based on ronxin's Word Embedding Visual Inspector</small>
+                <small>Based on UMichigan's Word Embedding Visual Inspector by ronxin</small>
             </center>
         </div>  <!-- end of container -->
         <script src="js/jquery-2.1.3.min.js"></script>
@@ -245,11 +241,15 @@
         <script src="js/pca.js"></script>
         <script src="js/vector_math.js"></script>
         <script src="js/toyw2v.js"></script>
+        <div class="text-center fig">
+          <img id="tensorboard_gif" src="img/tensorboard_projector.gif"/>
+          <small>Figure 2: Word Embedding Space visualization using Tensorflow Projector</small>
+        </div>
 
         <h3 class="mt-5">Tensor-Related Models After Word2Vec (Maas et. al, Mikolov et. al)</h3>
         <p>Maas presents a model that features metrics for semantic similarity and word sentiment on the IMDB dataset, and Mikolov presents a mathematical representation of skip-gram and bag-of-words models in a continuous space. </p>
 
-
+        
         <h2>Recurrent Neural Nets</h2>
         <p>In the previous section we learned about word embeddings, and that this technique allows us to have a vector-based representation of words, which is able to capture the complex syntax and semantics of a language. Also, we know
             that classical Artificial Neural Networks (ANN) perform operations on vectors and matrices. So, how can we leverage this knowledge for sentiment analysis tasks?</p>
@@ -277,7 +277,7 @@
             </div>
         </div>
         <div class="text-center fig">
-            <small>Figure 1: Structure of an input sequence</small>
+            <small>Figure 3: Structure of an input sequence</small>
         </div>
 
         <p>All the words in the sequence are highly dependent on each other. As depicted in Figure 1, every word is an input at a specific timestep of the sequence, and every timestep has a hidden state $h_t$ that tries to encode the
@@ -297,7 +297,7 @@
     </div>
 
     <div class="text-center fig">
-        <small>Figure 2: Visualization of an RNN given the previous input</small>
+        <small>Figure 4: Visualization of an RNN given Figure 3's input</small>
     </div>
 
     <p>Thinking about the above-described situation and considering how backpropagation works (weights are updated based on the gradients of the error with respect to the current weight (Hecht-Nielsen1989)), we can identify two
@@ -332,7 +332,7 @@
     </div>
 
     <div class="text-center fig">
-        <small>Figure 3: Interactive visualization of an LSTM cell</small>
+        <small>Figure 5: Interactive visualization of an LSTM cell</small>
     </div>
 
     <p class="mt-5">To conclude, deep sentiment analysis using LSTMs (or RNNs) consists of taking an input sequence and determining what kind of sentiment the text has. This could be simply determining if the input is positive or negative,
