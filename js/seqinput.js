@@ -18,11 +18,11 @@ $(document).ready(function () {
             clearTimeout(t);
         }
 
-        if (!$('#in-sentence').val().trim()) {
-            clearTimeout(t);
-            $('.seq-output').empty();
-            $('.rnn').empty();
-        }
+        // if (!$('#in-sentence').val().trim()) {
+        //     clearTimeout(t);
+        //     $('.seq-output').empty();
+        //     $('.rnn').empty();
+        // }
 
         t = setTimeout(function () {
             $('.seq-output').append(createInputs($('#in-sentence').val()));
