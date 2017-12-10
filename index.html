@@ -362,27 +362,78 @@
                 <a class="nav-item nav-link active" id="nav-lstm-tab" data-toggle="tab" href="#nav-lstm" role="tab" aria-controls="nav-lstm" aria-selected="true">LSTM Modules</a>
                 <a class="nav-item nav-link" id="nav-f-tab" data-toggle="tab" href="#nav-f" role="tab" aria-controls="nav-f" aria-selected="false">$f$orget</a>
                 <a class="nav-item nav-link" id="nav-i-tab" data-toggle="tab" href="#nav-i" role="tab" aria-controls="nav-i" aria-selected="false">$i$nput</a>
-                <a class="nav-item nav-link" id="nav-g-tab" data-toggle="tab" href="#nav-g" role="tab" aria-controls="nav-g" aria-selected="false">$c$ell</a>
+                <a class="nav-item nav-link" id="nav-c-tab" data-toggle="tab" href="#nav-c" role="tab" aria-controls="nav-g" aria-selected="false">$c$ell</a>
                 <a class="nav-item nav-link" id="nav-o-tab" data-toggle="tab" href="#nav-o" role="tab" aria-controls="nav-o" aria-selected="false">$o$utput</a>
             </nav>
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-lstm" role="tabpanel" aria-labelledby="nav-lstm-tab">
                     $$f_t=\sigma(W_f\cdot[h_{t-1},x_t]+b_f)$$
                 </div>
+
                 <div class="tab-pane fade" id="nav-f" role="tabpanel" aria-labelledby="nav-f-tab">
-                    $$f_t=\sigmoid(W)$$
+                    $$f_t=\sigma(W_f\cdot[h_{t-1},x_t]+b_f)$$
                 </div>
-                <div class="tab-pane fade" id="nav-i" role="tabpanel" aria-labelledby="nav-i-tab">i</div>
-                <div class="tab-pane fade" id="nav-g" role="tabpanel" aria-labelledby="nav-g-tab">g</div>
-                <div class="tab-pane fade" id="nav-o" role="tabpanel" aria-labelledby="nav-o-tab">o</div>
+
+                <div class="tab-pane fade" id="nav-i" role="tabpanel" aria-labelledby="nav-i-tab">
+                    $$i_t=\sigma(W_i\cdot[h_{t-1},x_t]+b_i)$$
+                    $$c_t=tanh(W_c\cdot[h_{t-1},x_t]+b_c)$$
+                </div>
+
+                <div class="tab-pane fade" id="nav-c" role="tabpanel" aria-labelledby="nav-c-tab">
+                    $$c_t=f_t\cdot c_{t-1}+i_t\cdot c_t$$
+                </div>
+                <div class="tab-pane fade" id="nav-o" role="tabpanel" aria-labelledby="nav-o-tab">
+                    $$i_t=\sigma(W_o\cdot[h_{t-1},x_t]+b_o)$$
+                    $$h_t=o_t\cdot tanh(c_t)$$
+                </div>
             </div>
         </div>
     </div>
 
     <script>
+        function des(){
+            $('#nav-lstm-tab').removeClass('active');
+            $('#nav-f-tab').removeClass('active');
+            $('#nav-i-tab').removeClass('active');
+            $('#nav-c-tab').removeClass('active');
+            $('#nav-o-tab').removeClass('active');
+
+            $('#nav-lstm').removeClass('active');
+            $('#nav-f').removeClass('active');
+            $('#nav-i').removeClass('active');
+            $('#nav-c').removeClass('active');
+            $('#nav-o').removeClass('active');
+        }
         $(document).ready(function(){
+            $('#nav-lstm-tab').click(function(){
+                $('.lstm-bg').attr({'src':'img/lstm.png'});
+                des();
+                $(this).addClass('active');
+                $('#nav-lstm').addClass('active show fade');
+            });
             $('#nav-f-tab').click(function(){
                 $('.lstm-bg').attr({'src':'img/fg.png'});
+                des();
+                $(this).addClass('active');
+                $('#nav-f').addClass('active show fade');
+            });
+            $('#nav-i-tab').click(function(){
+                $('.lstm-bg').attr({'src':'img/ig.png'});
+                des();
+                $(this).addClass('active');
+                $('#nav-i').addClass('active show fade');
+            });
+            $('#nav-c-tab').click(function(){
+                $('.lstm-bg').attr({'src':'img/cg.png'});
+                des();
+                $(this).addClass('active');
+                $('#nav-c').addClass('active show fade');
+            });
+            $('#nav-o-tab').click(function(){
+                $('.lstm-bg').attr({'src':'img/ohg.png'});
+                des();
+                $(this).addClass('active');
+                $('#nav-o').addClass('active show fade');
             });
         });
     </script>
@@ -509,6 +560,8 @@
 
     <p>Y. Bengio, R. Ducharme, P. Vincent. A neural probabilistic language model. Journal of Machine Learning Research, 3:1137-1155, 2003.</p>
 
+    <p>Colah, 27 August 2015, URL http://colah.github.io/posts/2015-08-Understanding-LSTMs/</p>
+
   <p>Eric H. Huang, R. Socher, C. D. Manning and Andrew Y. Ng. Improving Word Representations via Global Context and Multiple Word Prototypes. In: Proc. Association for Computational Linguistics, 2012.</p>
 
   <p>G.E. Hinton, J.L. McClelland, D.E. Rumelhart. Distributed representations. In: Parallel distributed processing: Explorations in the microstructure of cognition. Volume 1: Foundations, MIT Press, 1986.</p>
@@ -518,6 +571,7 @@
   <p>A.L. Maas, R.E. Daly, P.T. Pham, D. Huang, A.Y. Ng, and C. Potts. Learning word vectors for sentiment analysis. In Proceedings of ACL, 2011.</p>
 
   <p>“Vector Representations of Words  |  TensorFlow.” TensorFlow, www.tensorflow.org/tutorials/word2vec.</p>
+
 
 </div>
 </div>
