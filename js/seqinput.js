@@ -20,7 +20,6 @@ $(document).ready(function () {
 
         if (!$('#in-sentence').val().trim()) {
             clearTimeout(t);
-            // console.log($('#in-sentence').val().trim())
             $('.seq-output').empty();
             $('.rnn').empty();
         }
