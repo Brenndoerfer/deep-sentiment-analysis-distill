@@ -249,7 +249,7 @@
         <h3 class="mt-5">Tensor-Related Models After Word2Vec (Maas et. al, Mikolov et. al)</h3>
         <p>Maas presents a model that features metrics for semantic similarity and word sentiment on the IMDB dataset, and Mikolov presents a mathematical representation of skip-gram and bag-of-words models in a continuous space. </p>
 
-        
+
         <h2>Recurrent Neural Nets</h2>
         <p>In the previous section we learned about word embeddings, and that this technique allows us to have a vector-based representation of words, which is able to capture the complex syntax and semantics of a language. Also, we know
             that classical Artificial Neural Networks (ANN) perform operations on vectors and matrices. So, how can we leverage this knowledge for sentiment analysis tasks?</p>
@@ -258,7 +258,7 @@
             sequence based input and assign a specific class. The solution is Recurrent Neural Networks (RNN). We will assume that you know what a regular, fully-connected feed-forward neural network is, and how it works. </p>
         <p>Classical neural networks are feed-forward networks that have inputs, potentially multiple hidden layers, and outputs. Such a feed-forward network can only take a certain window of words into consideration, whereas “recurrent
             neural networks can take into account all of the predecessor words” (Sundermeyer). This works because with RNNs, each element of the input sequence is assigned to a specific timestep of the RNN. This sequential approach
-            allows the network to capture the temporal aspect of the input sequence. Figure 1 depicts the structure of an sequential input. </p>
+            allows the network to capture the temporal aspect of the input sequence. Figure 3 depicts the structure of an sequential input. </p>
 
         <div class="col-lg-12">
             <div class="text-center fig col-lg-10">
@@ -280,7 +280,7 @@
             <small>Figure 3: Structure of an input sequence</small>
         </div>
 
-        <p>All the words in the sequence are highly dependent on each other. As depicted in Figure 1, every word is an input at a specific timestep of the sequence, and every timestep has a hidden state $h_t$ that tries to encode the
+        <p>All the words in the sequence are highly dependent on each other. As depicted in Figure 4, every word is an input at a specific timestep of the sequence, and every timestep has a hidden state $h_t$ that tries to encode the
             previously-seen information. Additionally, at every timestep a weight matrix $W^X$, which is different for every timestep, gets multiplied with the current input $x_t$, where $x_t$ represents the current encoded word. $W^H$ is a
             recurrent weight matrix. This basically means that it stays the same, from the input to the output, but the weights still get updated at every timestep. The goal of $W^H$ is to encapsulate all information across all timesteps.
             The final hidden state is then fed into a softmax function, which gives a predicted class. The weight matrices within the RNN "are updated through an optimization process called backpropagation through time (Deshpande, 2017)."</p>
@@ -347,17 +347,17 @@
 
 <h2>Convolutional Neural Nets (CNN's)</h2>
           <h3>Review of Convolutional Neural Nets</h3>
-          <p>Convolutional neural networks have proven to excel on computer vision tasks. (LeCun et al., 2015, Krizhevsky et al., 2012) While CNN's are most frequently associated with computer vision and image processing tasks, work has extended CNN’s to nlp tasks. CNN’s in their most basic form consist of convolutional layers, pooling layers, and fully connected layers.</p> 
+          <p>Convolutional neural networks have proven to excel on computer vision tasks. (LeCun et al., 2015, Krizhevsky et al., 2012) While CNN's are most frequently associated with computer vision and image processing tasks, work has extended CNN’s to nlp tasks. CNN’s in their most basic form consist of convolutional layers, pooling layers, and fully connected layers.</p>
 
-          <p>Convolutional layers relate each value of the layer's output to a local patch of the layer’s input. This is achieved by moving a filter, sometimes referred to as a kernel, across the layer's input (LeCun et al., 1998). The filter consists of a matrix. The elements of the filter are multiplied element-wise by values in a patch of either the source image or the output of a previous layer. The resulting values of this multiplication are then summed and passed through a non-linear activation function. Multiple filters can be applied to each input, this results in a notion of channels where each channel represents the results of convolution across the whole input with one filter. During training the weights of these filters are learned via back propagation.</p>  
+          <p>Convolutional layers relate each value of the layer's output to a local patch of the layer’s input. This is achieved by moving a filter, sometimes referred to as a kernel, across the layer's input (LeCun et al., 1998). The filter consists of a matrix. The elements of the filter are multiplied element-wise by values in a patch of either the source image or the output of a previous layer. The resulting values of this multiplication are then summed and passed through a non-linear activation function. Multiple filters can be applied to each input, this results in a notion of channels where each channel represents the results of convolution across the whole input with one filter. During training the weights of these filters are learned via back propagation.</p>
 
-          <p>Pooling layers perform a down-select operation on the output of convolutional layers. These pooling operations amongst other things reduce computational cost, provide a notion of simplification to layer outputs, and in the case of images, contribute slightly to rotational and positional invariance.</p> 
+          <p>Pooling layers perform a down-select operation on the output of convolutional layers. These pooling operations amongst other things reduce computational cost, provide a notion of simplification to layer outputs, and in the case of images, contribute slightly to rotational and positional invariance.</p>
 
 
           <p>Depending on the task, fully connected layers are often applied after pooling and convolutional layers. In the case of sentiment analysis, these fully connected layers would likely also include layers with softmax or sigmoid activation in order to classify emotions or otherwise quantify sentiment. </p>
 
           <h3>Applying CNN's to sentiment analysis</h3>
-          
+
           <p>To utilize Convolutional Neural Networks in sentiment analysis, one most both encode the semantics of source text in a vector representation and maintain the positional dependencies between words. This is usually done by utilizing some word featurization scheme followed by stacking the word embeddings in a matrix. The CNN then applies convolutional filters over these stacked word embeddings giving a notion of positional dependence  amongst  adjacent words. The first convolutional layer usual spans the entire length of a word vector and then covers a few preceeding and following embeddings. (Kim, 2014) </p>
 
           <p>One prevalent approach is to utilize shallow convolutional neural networks. (Kim, 2014) In these architectures, filters spanning varying numbers of words, normally 2 to 7 words, are all applied to the input. These groups of words are often referred to as n-grams where n is the number of words considered. Max pooling operations are taken over the output from applying each filter in order to extract the most important features from each filer. After the max pooling operation, a fully connected layer is applied. In this strategy, shorter filters learn short term dependencies and larger filters learn longer term dependencies. The max pooling operation then collects the information over a time horizon of a specific length and fully connected layers synthesize this information into a result. This strategy is depicted in the following gif where we apply a filter acting over 3-grams (green) and a filter acting over 4-grams (red). The words on the far left correspond to the word vectors in the input layer (in reality word vectors would be much larger than 5 dimensional)</p>
@@ -392,14 +392,14 @@
             rows1.innerHTML = slider1.value;
             rows2.innerHTML = slider2.value;
            document.getElementById("img").src="img/conv_interact/"+s1val+s2val+".jpg"
-              
+
           }
 
           slider2.oninput = function() {
               slide2val = slider2.value
               slide1val = slider1.value
               test(slide1val, slide2val)
-             
+
           }
 
           slider1.oninput = function() {
