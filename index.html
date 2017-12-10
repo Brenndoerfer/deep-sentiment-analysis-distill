@@ -122,24 +122,23 @@
             <hr style="margin: 50px 0">
 
             <h2>Introduction</h2>
-            <p>How can a computer read a book? More importantly, how can a computer understand what it’s reading and assign a sentiment? </p>
+            <p>The research endeavor of sentiment analysis boils down to a simple question: How can a computer read a book? More specifically, how can a computer understand what it’s reading in terms of sentiment? </p>
             <p>Sentiment analysis aims to understand people’s opinions, sentiments, attitudes, and emotions from written language or speech (Liu, 2012). It is widely applied on data which contains customer opin- ions. The objective is,
                 to process the data and extract the general attitude of the author towards a certain topic. Let’s consider some examples:
                 A very simple example would be “This soap is amazing” or “Yack. That’s disguisting!”, or more complex phrases such as “The strawberries where delicious, although they we</p>
 
             <h3>Road Map</h3>
-            <p>Our review begins with describing the problem space of NLP with this very general question. We then introduce deep semantic analysis as an area of research inquiry that takes advantage of the recent leaps in computing from
-                Neural Networks and deep learning to solve this problem. We dive into various approaches to address deep semantic analysis, splitting our article into the three main areas we saw in our literature review: Featurization,
-                LSTMs, and CNNs. </p>
+            <p>Our review begins with describing the problem space of NLP with this very general question. We then introduce deep sentiment analysis as an area of research inquiry that takes advantage of the recent leaps in computing from
+                Neural Networks and deep learning to solve this problem. We dive into various approaches to address deep sentiment analysis, splitting our article into three main areas: how to represent text data (Featurization) and recent techniques in deep learning to derive sentiment-related insights (LSTMs and CNNs). </p>
 
             <h2>Featurization</h2>
             <h3>Encoding Representations</h3>
-            <p>In the problem of Deep Sentiment analysis, we start with a text file with nothing but words, and we know there is latent structure and meaning in the ordering of them and the punctuation used to separate them. How do we
-                encode this representation? NLP has created a variety of approaches to solve this problem:</p>
+            <p>In the research area of Deep Sentiment analysis, we start with a text file with nothing but words, and we know there is latent structure and meaning in their representation. We know that the ordering of words matters, the use of punctuation can convey strong feelings, and perhaps most importantly, word choice reveals a lot about sentiment. We also know that some words have positive or negative connotations with different levels of severity, and that words are related to each other in complex ways. How do we encode the plain text file that we recieve as relevant inputs to a deep learning model? NLP has created a variety of approaches to solve this problem:</p>
             <ul>
-                <li>bag-of-words: keeps only the counts of each time each word appears, disregarding grammar and order</li>
-                <li>TF-IDF: an expansion on bag-of-words, TF-IDF reflects “importance” of a word in a corpus by creating a term frequency-inverse document frequency metric</li>
-                <li>n-gram: bag-of-words, but considers n words at a time</li>
+                <li><b>bag-of-words</b>: This approach only keeps the counts of each time each word appears, disregarding the grammar and order of the input data. It makes the strong assumption that words are independent of each other, and that word frequencies reveal everything we need to know about content. While this seems like we're losing a lot of information, this approach performs remarkably well as a baseline.</li>
+                <li><b>TF-IDF</b>: This acronym expands to "Term Frequency - Inverse Document Frequency" and is an expansion on traditional bag-of-words approaches. TF-IDF reflects “importance” of a word in a corpus by creating a metric that's based on the name -- the frequency of the word appearing over the total number of times it's mentioned across all documents.</li>
+                <li><b>n-gram encoding</b>: This is another expansion of bag-of-words, but considers more than one word at a time. If n=1, we have the same thing as the bag-of-words approach. If n=2, we're considering combinations of two words as a unique term in our document. For example, consider the sentence "Vinitra, Michael, and Stefan went to the park." ["Vinitra", "Michael"] would be a bigram, ["Michael", "and"] would be another bigram, and so on. </li>
+                <li><b>stop word removal</b>: This is an addendum to previous techniques mentioned above, and involves removing words that theoretically don't hold much meaning (i.e. "the", "an", "and", etc.). This provides the advantage of reducing the number of unique words in your data, and therefore the dimensionality of your vocabulary. However, the disadvantage here (although not super relevant to the problem of sentiment analysis) is that you might lose some relevant information about author style. The number of quotation marks and stopwords can be used to predict time period of writing / gender of author / other descriptive metadata. </li>
             </ul>
 
             <h3>Word Embeddings</h3>
