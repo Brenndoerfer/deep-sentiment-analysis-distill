@@ -99,13 +99,12 @@
 <div class="container" style="background-color: #fff; padding: 100px 150px;">
     <div class="row">
         <div class="col-lg-12">
-            <img src="img/ucb.png" height="50" style="float:right; margin-top: -50px;"/>
-            <center><h1>Deep Sentiment Analysis</h1>
-
-                <p><b>Michael Brenndoerfer*, Stefan Palombo*, Vinitra Swamy*</b><br>
-                    University of California, Berkeley <br>
-                    Electrical Engineering and Computer Sciences (EECS)<br>
-                    <font size="-1">*equal contribution, alphabetical order </font></p></center>
+        <img src="img/ucb.png" height="50" style="float:right; margin-top: -50px;" />
+          <center><h1>Deep Sentiment Analysis</h1>
+          <p><b>Michael Brenndoerfer*, Stefan Palombo*, Vinitra Swamy*</b><br>
+          	UC Berkeley Electrical Engineering and Computer Sciences (EECS)<br>
+            Distill Literature Review <br>
+            <font size="-1">*equal contribution, alphabetical order </font></p></center>
             <hr style="margin: 50px 0">
 
             <h2>Introduction</h2>
@@ -126,11 +125,20 @@
                 <li>n-gram: bag-of-words, but considers n words at a time</li>
             </ul>
 
-            <h3>Word Embeddings</h3>
-            <p>Word embeddings are vector generated to represent words, usually trained using neural networks. This boosts performance for sentiment analysis immensely. Word2Vec is a Google package that uses 2-layer NNs and the skip-gram /
-                CBOW algorithms to train embeddings.</p>
-            <p> For the default example, train the network by training the model for 500 iterations (pressing the green "500" button) and observing the relationship between "woman" and "queen" and "man" and "king". </p>
-            <div hidden class="alert alert-danger" id="error"></div>
+          <h3>Word Embeddings</h3>
+           <p>Word embeddings are vector generated to represent words, usually trained using neural networks. This boosts performance for sentiment analysis immensely. Word2Vec is a Google package that uses 2-layer NNs and the skip-gram / CBOW algorithms to train embeddings.</p>
+          <div class="text-center fig">
+          <img src="img/3.png" class="img-center" width="800" />
+          <br>
+          <small>Figure 1: Word2Vec Explanation</small>
+          </div>
+
+          <p>Tensorboard visualization <br>
+
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/wPy-b7_IFtk" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+          </p>
+          <p> For the default example, train the network by training the model for 500 iterations (pressing the green "500" button) and observing the relationship between "woman" and "queen" and "man" and "king". Then perform Principal Component Analysis by pressing the "PCA" button. (This is just a way to reduce dimensions of our data and display them in relation to each other).</p>
+          <div hidden class="alert alert-danger" id="error"></div>
             <div class="row">
                 <div class="col-sm-8 no-padding">
                     <div class="panel panel-default">

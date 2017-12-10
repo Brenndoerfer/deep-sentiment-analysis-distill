@@ -33,7 +33,7 @@ function init() {
 function set_default_config() {
   var default_config_obj = {
     hidden_size: 5,
-    random_state: 1,
+    random_state: 20,
     learning_rate: 0.2,
   };
   $('#config-text').html(JSON.stringify(default_config_obj, null, ''));
@@ -57,14 +57,14 @@ function load_config() {
 function set_default_training_data() {
   var presets = 
     [
-    // {name:"Fruit and juice", data:"eat|apple,eat|orange,eat|rice,drink|juice,drink|milk,drink|water,orange|juice,apple|juice,rice|milk,milk|drink,water|drink,juice|drink"},
+    //{name:"Fruit and juice", data:"eat|apple,eat|orange,eat|rice,drink|juice,drink|milk,drink|water,orange|juice,apple|juice,rice|milk,milk|drink,water|drink,juice|drink"},
     //  {name:"Fruit and juice (CBOW)", data: "drink^juice|apple,eat^apple|orange,drink^juice|rice,drink^milk|juice,drink^rice|milk,drink^milk|water,orange^apple|juice,apple^drink|juice,rice^drink|milk,milk^water|drink,water^juice|drink,juice^water|drink"},
     //  {name:"Fruit and juice (Skip-gram)", data: "apple|drink^juice,orange|eat^apple,rice|drink^juice,juice|drink^milk,milk|drink^rice,water|drink^milk,juice|orange^apple,juice|apple^drink,milk|rice^drink,drink|milk^water,drink|water^juice,drink|juice^water"},
     //  {name:"Self loop (5-point)", data:"A|A,B|B,C|C,D|D,E|E"},
     //  {name:"Directed loop (5-point)", data:"A|B,B|C,C|D,D|E,E|A"},
     //  {name:"Undirected loop (5-point)", data:"A|B,B|C,C|D,D|E,E|A,B|A,C|B,D|C,E|D,A|E"},
-     {name:"King and queen", data: "king|kindom,queen|kindom,king|palace,queen|palace,king|royal,queen|royal,king|George,queen|Mary,man|farmer,woman|farmer,man|house,woman|house,man|George,woman|Mary"},
-     // {name:"King and queen (symbol)", data: "king|a,queen|a,king|b,queen|b,king|c,queen|c,king|x,queen|y,man|d,woman|d,man|e,woman|e,man|f,woman|f,man|x,woman|y"},
+     {name:"King and queen", data: "king|kingdom,queen|kingdom,king|palace,queen|palace,kingdom|palace,king|royal,queen|royal,king|Henry,queen|Elizabeth,man|child,woman|child,man|farmer,woman|farmer,man|house,woman|house,man|Henry,woman|Elizabeth"},
+     {name:"King and queen (symbol)", data: "king|a,queen|a,king|b,queen|b,king|c,queen|c,king|x,queen|y,man|d,woman|d,man|e,woman|e,man|f,woman|f,man|x,woman|y"},
     ];
   
   $('#input-text').html(presets[0].data);
