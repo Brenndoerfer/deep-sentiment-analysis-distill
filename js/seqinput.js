@@ -60,6 +60,9 @@ $(document).ready(function () {
     }
 
     function rnnEnd() {
+
+        a = Math.round(Math.random() * 100) / 100;
+        b = 1 - a;
         return ' <div class="block" style="float: left;">' +
             '                    <img src="img/a1.png" width="50" class="a1">' +
             '                    <div class="text-center softmax">' +
@@ -69,7 +72,7 @@ $(document).ready(function () {
             '                <div class="block" style="float: left;">' +
             '                    <img src="img/a1.png" width="50" class="a1">' +
             '                    <div class="text-center classification">' +
-            '                        <div style="padding-top: 18px;">$[0.42, 0.58]$</div>' +
+            '                        <div style="padding-top: 18px;">$[' + a + ',' + b + ']$</div>' +
             '                    </div>' +
             '                </div>';
     }

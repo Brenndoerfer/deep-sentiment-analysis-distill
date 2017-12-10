@@ -24,6 +24,8 @@
 
 
 
+
+
     </script>
     <style type="text/css">
         p {
@@ -132,28 +134,24 @@
             <h3>Word Embeddings</h3>
             <p>Word embeddings are vector generated to represent words, usually trained using neural networks. This boosts performance for sentiment analysis immensely. Word2Vec is a Google package that uses 2-layer NNs and the skip-gram /
                 CBOW algorithms to train embeddings.</p>
-            <div class="text-center fig">
-                <img src="img/3.png" class="img-center" width="800"/>
-                <br>
-                <small>Figure 1: Word2Vec Explanation</small>
+
+            <div class="text-center mt-5 mb-5">
+                <p>Tensorboard visualization</p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/wPy-b7_IFtk" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
             </div>
 
-            <p>Tensorboard visualization <br>
-
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/wPy-b7_IFtk" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-            </p>
             <p> For the default example, train the network by training the model for 500 iterations (pressing the green "500" button) and observing the relationship between "woman" and "queen" and "man" and "king". Then perform Principal
                 Component Analysis by pressing the "PCA" button. (This is just a way to reduce dimensions of our data and display them in relation to each other).</p>
             <div hidden class="alert alert-danger" id="error"></div>
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-sm-8 no-padding">
                     <div class="panel panel-default">
                         <center>
-                            <div class="panel-heading">Neurons</div>
+                            <div class="panel-heading"><b>Neurons</b></div>
                             <div class="panel-body">
                                 <div id="neuron-vis"></div>
                                 <div>
-                                    <p> Training iterations:</p>
+                                    <div class="mb-2"><b>Training iterations</b></div>
                                     <div class="btn-group">
                                         <button class="btn btn-success" id="btn-next">Next</button>
                                         <button class="btn btn-success" id="btn-next20">20</button>
@@ -173,26 +171,24 @@
                     </div>
                 </div>  <!-- end of top left-panel -->
 
-                <div class="col-sm-4 no-padding">
+                <div class="col-sm-4 no-padding mt-3">
                     <div class="panel panel-default">
-                        <center>
-                            <div class="panel-heading">Control Panel</div>
-                        </center>
-                        <p><font size=-1>These are the visualization inputs! You can change the input data in "Training Data"
-                            and the number of hidden layers/learning rate in configurations.</font></p>
-                        <div class="panel-body">
+                        <div class="panel-heading"><b>Control Panel</b></div>
+                        <small>These are the visualization inputs! You can change the input data in "Training Data"
+                            and the number of hidden layers/learning rate in configurations.</small>
+                        <div class="panel-body mt-4">
                             <div>
-                                <p>Neural Network Configurations:</p>
-                                <textarea rows="4" id="config-text"></textarea>
+                                <div><b>Neural Network Configurations</b></div>
+                                <textarea rows="4" cols="50" style="font-size: 10px" id="config-text"></textarea>
                                 <br>
                             </div>
-                            <div>
-                                <p>Training data (context|target):</p>
-                                <textarea rows="4" id="input-text"></textarea>
+                            <div class="mt-3">
+                                <div><b>Training data (context|target)</b></div>
+                                <textarea r rows="4" cols="50" style="font-size: 10px" id="input-text"></textarea>
                                 <br>
                             </div>
-                            <div>
-                                <p>Presets: </p>
+                            <div class="mt-3">
+                                <b>Presets</b>
                                 <select id="sel-presets"></select>
                                 <br>
                             </div>
@@ -231,7 +227,6 @@
                 <small>Based on ronxin's Word Embedding Visual Inspector</small>
             </center>
         </div>  <!-- end of container -->
-
         <script src="js/jquery-2.1.3.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/d3.v3.min.js"></script>
@@ -240,7 +235,7 @@
         <script src="js/vector_math.js"></script>
         <script src="js/toyw2v.js"></script>
 
-        <h3>Tensor-Related Models After Word2Vec (Maas et. al, Mikolov et. al)</h3>
+        <h3 class="mt-5">Tensor-Related Models After Word2Vec (Maas et. al, Mikolov et. al)</h3>
         <p>Maas presents a model that features metrics for semantic similarity and word sentiment on the IMDB dataset, and Mikolov presents a mathematical representation of skip-gram and bag-of-words models in a continuous space. </p>
 
 
@@ -306,12 +301,10 @@
         requires $x_t$ and $h_(t-1)$ as input (the output of the previous state). The output will be the more complexly established hidden state $h_t$. Briefly speaking, "the input gate determines how much emphasis to put on each of the
         inputs, the forget gate determines the information that we'll throw away, and the output gate determines the final $h_t$ based on the intermediate states".</p>
 
-    <div class="text-center fig">
-        <img src="img/4.png" class="img-center" width="800"/>
-        <br>
-        <small>Figure 1: Random test caption</small>
+    <div class="row mt-5">
+        <div class="col-lg-12 text-center ml-5 lstm">
+        </div>
     </div>
-    <p>additional gate explanation + graphics</p>
 
     <p>To conclude, deep sentiment analysis using LSTMs (or RNNs) consists of taking an input sequence and determining what kind of sentiment the text has. This could be simply determining if the input is positive or negative, or you
         could look at it in more detail, classifying into categories, such as funny, sad, angry, excited, etc.</p>
@@ -323,12 +316,6 @@
         Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
     <p>
 
-    <div class="text-center fig">
-        <img src="img/4.png" class="img-center" width="800"/>
-        <br>
-        <small>Figure 1: Random test caption</small>
-    </div>
-    <p>additional gate explanation + graphics</p>
 
     <p>To conclude, deep sentiment analysis using LSTMs (or RNNs) consists of taking an input sequence and determining what kind of sentiment the text has. This could be simply determining if the input is positive or negative, or you
         could look at it in more detail, classifying into categories, such as funny, sad, angry, excited, etc.</p>
