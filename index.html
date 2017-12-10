@@ -342,91 +342,71 @@
         as video to text (Venugopalan et al., 2015), for handwriting generation (Graves, 2014), for image generation (Gregor et al., 2015) or question answering systems (Wang and Nyberg, 2015).</p>
     <h2>Convolutional Neural Nets (CNN's)</h2>
 
-    <h3>Review of Convolutional Neural Nets</h3>
-    <p>Convolutional neural networks have proven to excel on computer vision tasks.[cite] While CNN's are most frequently associated with computer vision and image processing tasks, work has extended CNN’s to nlp tasks.[cite] CNN’s in their
-        most basic form consist of convolutional layers, pooling layers, and fully connected layers.[cite ?]</p>
-    z
-    <p>Convolutional layers relate the output of individual neurons to a local patch of the layer’s input by moving a filter, sometimes referred to as a kernel, across the layer's input. The filter consists of a matrix. The elements of the
-        filter are multiplied elementwise by the values in patches of either the source image or the output of a previous layer, the resulting values of this multiplication are then summed and passed through a non-linear activation
-        function. Multiple filters can be applied to each input, this results in a notion of channels where each channel represents the results of convolution with one filter. During traing the weights of these filters are learned via back
-        propogation.</p>
+<h2>Convolutional Neural Nets (CNN's)</h2>
+          <h3>Review of Convolutional Neural Nets</h3>
+          <p>Convolutional neural networks have proven to excel on computer vision tasks. (LeCun et al., 2015, Krizhevsky et al., 2012) While CNN's are most frequently associated with computer vision and image processing tasks, work has extended CNN’s to nlp tasks. CNN’s in their most basic form consist of convolutional layers, pooling layers, and fully connected layers.</p> 
 
-    <p>Pooling layers perform a downselect operation on the output of convolutional layers. These pooling operations amongst other things reduce computational cost, provide a notion of simplification to layer outputs, and in the case of
-        images, contribute slightly to rotational invariance.
+          <p>Convolutional layers relate the output of individual neurons to a local patch of the layer’s input by moving a filter, sometimes referred to as a kernel, across the layer's input (LeCun et al., 1998). The filter consists of a matrix. The elements of the filter are multiplied elementwise by the values in patches of either the source image or the output of a previous layer, the resulting values of this multiplication are then summed and passed through a non-linear activation function. Multiple filters can be applied to each input, this results in a notion of channels where each channel represents the results of convolution with one filter. During traing the weights of these filters are learned via back propogation.</p>  
 
-    <p>Depending on the task, fully connected layers are often applied after pooling and convolutional layers. In the case of sentiment analysis, these fully connected layers would likeley also include layers with softmax or sigmoid
-        activation in order to classify emotions or otherwise quantify sentiment. </p>
+          <p>Pooling layers perform a downselect operation on the output of convolutional layers. These pooling operations amongst other things reduce computational cost, provide a notion of simplification to layer outputs, and in the case of images, contribute slightly to rotational and positional invariance. 
 
-    <p>Depending on the task, fully connected layers are often applied after pooling and convolutional layers. In the case of sentiment analysis, these fully connected layers would likeley also include layers with softmax or sigmoid
-        activation in order to classify emotions or otherwise quantify sentiment. </p>
+          <p>Depending on the task, fully connected layers are often applied after pooling and convolutional layers. In the case of sentiment analysis, these fully connected layers would likeley also include layers with softmax or sigmoid activation in order to classify emotions or otherwise quantify sentiment.  </p>
 
-    <h3>Applying CNN's to sentiment analysis</h3>
+          <p>Depending on the task, fully connected layers are often applied after pooling and convolutional layers. In the case of sentiment analysis, these fully connected layers would likeley also include layers with softmax or sigmoid activation in order to classify emotions or otherwise quantify sentiment.  </p>
 
-    <p>To utilize Convolutional Neural Networks in sentiment analysis, one most both encode the semantics of source text in a vector representation and maintain the positional dependencies between words. This is usually done by utilizing
-        some word featurization scheme followed by stacking the word embeddings in a matrix. The CNN then applies convolutional filters over these stacked word embeddings giving a notion of positional dependence amongst adjacent words. The
-        first convolutional layer usual spans the entire length of a word vector and then covers a few adjacent embeddings. [5]</p>
+          <h3>Applying CNN's to sentiment analysis</h3>
+          
+          <p>To utilize Convolutional Neural Networks in sentiment analysis, one most both encode the semantics of source text in a vector representation and maintain the positional dependencies between words. This is usually done by utilizing some word featurization scheme followed by stacking the word embeddings in a matrix. The CNN then applies convolutional filters over these stacked word embeddings giving a notion of positional dependence  amongst  adjacent words. The first convolutional layer usual spans the entire length of a word vector and then covers a few adjacent embeddings. (Kim, 2014) </p>
 
-    <p>One prevalent approach is to utilize shallow convolutional neural networks. In these archetectures, filters spanning varrying numbers of words, normaly 2 to 7 words (these groups of words are often refferend to as n-grams where n is
-        the number of words considered), are all applied to the input. Filters of similar size are grouped together and max pooling operations are taken over these groups of resultant features in order to extract the most important features
-        from groups of similarly sized n-grams. After the max pooling operation, a fully connected layer is applied. In this strategy, shorter filters learn short term dependencies and larger filters learn longer term dependencies. The max
-        pooling operation then collects the information over similar time horizons and fully conected layers synthesize this information into a result.[cite] This strategy is depicted in the following.</p>
+          <p>One prevalent approach is to utilize shallow convolutional neural networks. (Kim, 2014) In these archetectures, filters spanning varrying numbers of words, normaly 2 to 7 words, are all applied to the input. These groups of words are often refferend to as n-grams where n is the number of words considered. Filters of similar size are grouped together and max pooling operations are taken over these groups of resultant features in order to extract the most important features from groups of similarly sized n-grams. After the max pooling operation, a fully connected layer is applied. In this strategy, shorter filters learn short term dependencies and larger filters learn longer term dependencies. The max pooling operation then collects the information over similar time horizons and fully conected layers synthesize this information into a result.[cite] This strategy is depicted in the following.</p>
 
-    <p>A different approach relies on deep convolutional nets. For deep convolutional approaches, character embeddings are often employed instead of word embeddings. In deep convolutional approaches, smaller filters are applied over a deep
-        set of layers. In this strategy, subsequent layers learn dependencies amongst the features of groups of words or characters produced by previous layers much in the same way that later layers in CNN’s learn more complex features of
-        groups of pixels in image recognition tasks. Because each layer groups features from a portion of the source text and feeds to the next layer, as one descends further into the neural net, the filters can assimilate information from
-        greater proportions of the source text. We show this notion in the following figure. For simplicity, we display word embeddings instead of character embeddings however one of the landmark achievemnets of this model structure is
-        succesfull classification with character embeddings. The purple regions show the values in previous layers which contribute to the state of the purple entry on the right most layer. The words on the far left correspond to the word
-        vectors in the input layer (in reality word vectors would be much larger than 5 dimentional). By moving the sliders it is possible to see how the filter size changes which inputs later layers are computed from.</p>
+          <p>A different approach relies on deep convolutional nets.(Conneau et al., 2016) For deep convolutional approaches, character embeddings are often employed instead of word embeddings. In deep convolutional approaches, smaller filters are applied over a deep set of layers. In this strategy, subsequent layers learn dependencies amongst the features of groups of words or characters produced by previous layers much in the same way that later layers in CNN’s learn more complex features of groups of pixels in image recognition tasks. Because each layer groups features from a portion of the source text and feeds to the next layer, as one descends further into the neural net, the filters can assimilate information from greater proportions of the source text. We show this notion in the following figure. For simplicity, we display word embeddings instead of character embeddings however one of the landmark achievemnets of this model structure is succesfull classification with character embeddings. The purple regions show the values in previous layers which contribute to the state of the purple entry on the right most layer. The words on the far left correspond to the word vectors in the input layer (in reality word vectors would be much larger than 5 dimentional). By moving the sliders it is possible to see how the filter size changes which inputs later layers are computed from.</p>
 
 
-    <p>Drag the slider to change the number of rows in the first and second filters.</p>
-    <div id="slidecontainer">
-        <input type="range" min="1" max="5" value="3" class="slider" id="firstFilter">
-        <p>Rows in filter for the first layer: <span id="numRow1"></span></p>
-    </div>
+          <p>Drag the slider to change the number of rows in the first and second filters.</p>
+          <div id="slidecontainer">
+            <input type="range" min="1" max="5" value="3" class="slider" id="firstFilter">
+            <p>Rows in filter for the first layer: <span id="numRow1"></span></p>
+          </div>
 
-    <div id="slidecontainer2">
-        <input type="range" min="1" max="3" value="2" class="slider" id="secFilter">
-        <p>Rows in filter for the second layer: <span id="numRow2"></span></p>
-    </div>
-    <img id="img" src="img/conv_interact/32.jpg"/>
-    <script>
-        var slider1 = document.getElementById("firstFilter");
-        var slider2 = document.getElementById("secFilter");
-        var rows1 = document.getElementById("numRow1");
-        var rows2 = document.getElementById("numRow2");
-        var slide1val = slider1.value;
-        var slide2val = slider2.value;
-        rows1.innerHTML = slider1.value;
-        rows2.innerHTML = slider2.value;
+          <div id="slidecontainer2">
+            <input type="range" min="1" max="3" value="2" class="slider" id="secFilter">
+            <p>Rows in filter for the second layer: <span id="numRow2"></span></p>
+          </div>
+          <img id="img" src="img/conv_interact/32.jpg"/>
+          <script>
+          var slider1 = document.getElementById("firstFilter");
+          var slider2 = document.getElementById("secFilter");
+          var rows1 = document.getElementById("numRow1");
+          var rows2 = document.getElementById("numRow2");
+          var slide1val = slider1.value;
+          var slide2val = slider2.value;
+          rows1.innerHTML = slider1.value;
+          rows2.innerHTML = slider2.value;
 
-        function test(s1val, s2val) {
+          function test(s1val, s2val){
             rows1.innerHTML = slider1.value;
             rows2.innerHTML = slider2.value;
-            document.getElementById("img").src = "img/conv_interact/" + s1val + s2val + ".jpg"
+           document.getElementById("img").src="img/conv_interact/"+s1val+s2val+".jpg"
+              
+          }
 
-        }
+          slider2.oninput = function() {
+              slide2val = slider2.value
+              slide1val = slider1.value
+              test(slide1val, slide2val)
+             
+          }
 
-        slider2.oninput = function () {
-            slide2val = slider2.value
-            slide1val = slider1.value
-            test(slide1val, slide2val)
+          slider1.oninput = function() {
+              slide2val = slider2.value
+              slide1val = slider1.value
+              test(slide1val, slide2val)
+          }
 
-        }
+          </script>
 
-        slider1.oninput = function () {
-            slide2val = slider2.value
-            slide1val = slider1.value
-            test(slide1val, slide2val)
-        }
-
-    </script>
-
-    <p>Even though many state of the art applications in language processing utilize LSTM’s or other recurrent structures, convolutional structures are free of many of the issues that are present in recurrent structures. CNN’s don’t need to
-        backpropagate through a recurrent structure as do LSTM’s, this means that training on CNN’s is significantly faster than with LSTM’s. Additionally, CNN’s aren’t as prone to vanishing and exploding gradients as LSTM’s. This means
-        that in some tasks and under certain constraints, the trade off off between speed and performance may favor CNN’s.</p>
-
-    <h3>Subsection 1.1</h3>
+          <p>Even though many state of the art applications in language processing utilize LSTM’s (Yang, 2016), convolutional structures are free of many of the issues that are present in recurrent structures. CNN’s don’t need to backpropagate through a recurrent structure as do LSTM’s, this means that training on CNN’s is significantly faster than with LSTM’s. Additionally, CNN’s aren’t as prone to vanishing and exploding gradients as LSTM’s. This means that CNN's can provide a level of ease of training and speed ups that make them an attractive option for text calssification broadly and sentiment analysis specificaly.</p>
     <h2>References</h2>
     <p>
         Martin Sundermeyer, Ralf Schlüter, and Hermann Ney. LSTM Neural Net- works for Language Modeling. URL https://pdfs.semanticscholar.org/f9a1/ b3850dfd837793743565a8af95973d395a4e.pdf.
@@ -448,6 +428,25 @@
     <p>Subhashini Venugopalan, Marcus Rohrbach, Jeff Donahue, Raymond Mooney, Trevor Darrell, and Kate Saenko. Sequence to Sequence – Video to Text. 2015. URL https://arxiv.org/pdf/ 1505.00487v3.pdf.</p>
     <p>Oriol Vinyals, Alexander Toshev, Samy Bengio, and Dumitru Erhan. Show and Tell: A Neural Image Caption Generator. 2015. URL https://arxiv.org/pdf/1411.4555v2.pdf.</p>
     <p>Di Wang and Eric Nyberg. A Long Short-Term Memory Model for Answer Sentence Selection in Question Answering. pages 707–712, 2015. URL http://www.aclweb.org/anthology/ P15-2116.</p>
+    <p>Hecht-Nielsen. Theory of the backpropagation neural network. In International Joint Conference on Neural Networks, pages 593–605 vol.1. IEEE, 1989. doi: 10.1109/IJCNN.1989.118638. URL
+        http://ieeexplore.ieee.org/document/118638/.</p>
+    <p>Kim, Y.. Convolutional Neural Networks for Sentence Classification, 2014. https://doi.org/10.3115/v1/D14-1181 </p>
+    <p>Yann LeCun, L´eon Bottou, Yoshua Bengio, and Patrick
+        Haffner. 1998. Gradient-based learning applied to
+        document recognition. Proceedings of the IEEE,
+        86(11):2278–2324.</p>
+
+    <p>Y. LeCun, Y. Bengio, and G. E. Hinton. Deep learning.
+        Nature, 2015.</p>
+    <p>A. Krizhevsky, I. Sutskever, G. Hinton. 2012. ImageNet
+    Classification with Deep Convolutional Neural
+    Networks. In Proceedings of NIPS 2012.</p>
+    <p>Yoshua Bengio, Rejean Ducharme, and Pascal Vincent.
+    2001. A neural probabilistic language model.
+    In NIPS, volume 13, pages 932–938, Vancouver,
+    British Columbia, Canada.</p>
+    <p>Wang, Y., Huang, M., Zhao, L., Zhu, X. (2016). Attention-based LSTM for Aspect-level Sentiment Classification. Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing (EMNLP), 606–615.</p>
+    <p>Conneau, A., Schwenk, H., Barrault, L., Lecun, Y. (2016). Very Deep Convolutional Networks for Text Classification, (2001). https://doi.org/10.1007/s13218-012-0198-z</p>
 </div>
 </div>
 </div>
