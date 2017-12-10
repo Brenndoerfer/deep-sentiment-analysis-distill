@@ -44,14 +44,14 @@ $(document).ready(function () {
         var word = sentence.trim().split(' ');
         var opa = 1 / (word.length);
         for (var i = 0; i < word.length; i++) {
-            cell += ' <div class="block" style="float: left; opacity:' + (opa * (i + 1) + 0.3) + '">' +
+            cell += ' <div class="block text-center" style="float: left; opacity:' + (opa * (i + 1) + 0.3) + '">' +
                 '                    <img src="img/a1.png" width="50" class="a1">' +
                 '                    <div class="wh">$W^H$</div>' +
                 '                    <div class="text-center ht">' +
                 '                        <div    style="padding-top: 18px;">$h_{' + i + '}$</div>' +
                 '                    </div>' +
                 '                    <img src="img/a2.png" width="50" style="float: left; margin-top: -20px">' +
-                '                    <div class="wx">$W^X_{' + i + '}$</div>' +
+                '                    <div class="wx text-center">$W^X_{' + i + '}$</div>' +
                 '                    <div class="text-center xt">$x_{' + i + '}$</div>' +
                 '                    <div class="text-center out">' + word[i] + '</div>' +
                 '                </div>'

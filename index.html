@@ -16,22 +16,13 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     <script src="js/seqinput.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
     });
-
-
-
-
-
-
-
-
-
-
-
-
     </script>
     <style type="text/css">
         p {
@@ -244,8 +235,6 @@
                 <br>
                 <small>Based on UMichigan's Word Embedding Visual Inspector by ronxin</small>
             </center>
-        <script src="js/jquery-2.1.3.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
         <script src="js/d3.v3.min.js"></script>
         <script src="js/assert.js"></script>
         <script src="js/pca.js"></script>
@@ -341,12 +330,62 @@
         inputs, the forget gate determines the information that we'll throw away, and the output gate determines the final $h_t$ based on the intermediate states" (Deshpande, 2017).</p>
 
     <div class="row mt-5 img-center">
-        <div class="col-lg-12 text-center">
-            <img src="img/lstm-cell.png"/>
+
+        <div class="col-lg-12 text-center lstm">
+            <img src="img/lstm.png"style="width: 100%" class="lstm-bg"/>
+            <div style="position: absolute; margin-top: -510px; margin-left: 215px; width: 60px; height: 60px; border-radius: 50%; background-color: transparent; font-size: 80px;">$\otimes$</div>
+            <div style="position: absolute; margin-top: -510px; margin-left: 431px; width: 60px; height: 60px; border-radius: 50%; background-color: transparent; font-size: 80px;">$\oplus$</div>
+            <div style="position: absolute; margin-top: -375px; margin-left: 431px; width: 60px; height: 60px; border-radius: 50%; background-color: transparent; font-size: 80px;">$\otimes$</div>
+            <div style="position: absolute; margin-top: -284px; margin-left: 664px; width: 60px; height: 60px; border-radius: 50%; background-color: transparent; font-size: 80px;">$\otimes$</div>
+
+            <div style="position: absolute; margin-top: -138px; margin-left: 124px; width: 60px; height: 60px; border-radius: 50%; background-color: #ddd; padding-top: 15px;">$input$</div>
+            <div style="position: absolute; margin-top: -138px; margin-left: 64px;">$h_{t-1}$</div>
+            <div style="position: absolute; margin-top: -10px; margin-left: 148px;">$x_t$</div>
+
+            <div style="position: absolute; margin-top: -475px; margin-left: 160px;">$c_{t-1}$</div>
+            <div style="position: absolute; margin-top: -475px; margin-left: 750px;">$c_t$</div>
+            <div style="position: absolute; margin-top: -140px; margin-left: 740px;">$h_t$</div>
+
+            <div style="position: absolute; margin-top: -340px; margin-left: 220px;" class="fg">$f$</div>
+            <div style="position: absolute; margin-top: -340px; margin-left: 380px;" class="ig">$i$</div>
+            <div style="position: absolute; margin-top: -270px; margin-left: 480px;" class="gg">$g$</div>
+            <div style="position: absolute; margin-top: -240px; margin-left: 630px;" class="og">$c$</div>
+
+            <div style="position: absolute; margin-top: -235px; margin-left: 210px; width: 80px; height: 48px; border-radius: 3px; background-color: #aec4dc; padding-top: 10px;">$sigmoid$</div>
+            <div style="position: absolute; margin-top: -235px; margin-left: 310px; width: 80px; height: 48px; border-radius: 3px; background-color: #aec4dc; padding-top: 10px;">$sigmoid$</div>
+            <div style="position: absolute; margin-top: -235px; margin-left: 424px; width: 80px; height: 48px; border-radius: 3px; background-color: #aec4dc; padding-top: 10px;">$tanh$</div>
+            <div style="position: absolute; margin-top: -235px; margin-left: 537px; width: 80px; height: 48px; border-radius: 3px; background-color: #aec4dc; padding-top: 10px;">$sigmoid$</div>
+            <div style="position: absolute; margin-top: -360px; margin-left: 658px; width: 80px; height: 48px; border-radius: 3px; background-color: #aec4dc; padding-top: 10px;">$tanh$</div>
         </div>
-        <div class="col-lg-12 text-center ml-5 lstm">
+        <div class="col-lg-12 text-center mt-5">
+            <nav class="nav nav-tabs" id="myTab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-lstm-tab" data-toggle="tab" href="#nav-lstm" role="tab" aria-controls="nav-lstm" aria-selected="true">LSTM Modules</a>
+                <a class="nav-item nav-link" id="nav-f-tab" data-toggle="tab" href="#nav-f" role="tab" aria-controls="nav-f" aria-selected="false">$f$orget</a>
+                <a class="nav-item nav-link" id="nav-i-tab" data-toggle="tab" href="#nav-i" role="tab" aria-controls="nav-i" aria-selected="false">$i$nput</a>
+                <a class="nav-item nav-link" id="nav-g-tab" data-toggle="tab" href="#nav-g" role="tab" aria-controls="nav-g" aria-selected="false">$c$ell</a>
+                <a class="nav-item nav-link" id="nav-o-tab" data-toggle="tab" href="#nav-o" role="tab" aria-controls="nav-o" aria-selected="false">$o$utput</a>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-lstm" role="tabpanel" aria-labelledby="nav-lstm-tab">
+                    $$f_t=\sigma(W_f\cdot[h_{t-1},x_t]+b_f)$$
+                </div>
+                <div class="tab-pane fade" id="nav-f" role="tabpanel" aria-labelledby="nav-f-tab">
+                    $$f_t=\sigmoid(W)$$
+                </div>
+                <div class="tab-pane fade" id="nav-i" role="tabpanel" aria-labelledby="nav-i-tab">i</div>
+                <div class="tab-pane fade" id="nav-g" role="tabpanel" aria-labelledby="nav-g-tab">g</div>
+                <div class="tab-pane fade" id="nav-o" role="tabpanel" aria-labelledby="nav-o-tab">o</div>
+            </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function(){
+            $('#nav-f-tab').click(function(){
+                $('.lstm-bg').attr({'src':'img/fg.png'});
+            });
+        });
+    </script>
 
     <div class="text-center fig">
         <small>Figure 5: Interactive visualization of an LSTM cell</small>
