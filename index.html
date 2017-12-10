@@ -21,17 +21,6 @@
       tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
     });
 
-
-
-
-
-
-
-
-
-
-
-
     </script>
     <style type="text/css">
         p {
@@ -129,20 +118,20 @@
 
             <h2>Introduction</h2>
             <p>The research endeavor of sentiment analysis boils down to a simple question: How can a computer read a book? More specifically, how can a computer understand what it’s reading in terms of sentiment? </p>
-            <p>Sentiment analysis aims to understand people’s opinions, sentiments, attitudes, and emotions from written language or speech (Liu, 2012). It is widely applied on data which contains customer opin- ions. The objective is,
+            <p>Sentiment analysis aims to understand people’s opinions, sentiments, attitudes, and emotions from written language or speech (Liu, 2012). It is widely applied on data which contains customer opin- ions. The objective is
                 to process the data and extract the general attitude of the author towards a certain topic. Let’s consider some examples:
                 A very simple example would be “This soap is amazing” or “Yack. That’s disguisting!”, or more complex phrases that have elements of both positive and negative sentiment  such as “The strawberries where delicious, although they we thought they were a bit too tart."</p>
 
             <h3>Road Map</h3>
             <p>Our review begins with describing the problem space of NLP and respresentations of text data for deep learning. We then introduce deep sentiment analysis as an area of research inquiry that takes advantage of the recent leaps in computing from
-                Neural Networks. We dive into various approaches to address deep sentiment analysis, splitting our article into three main areas: the many ways to represent text data (Featurization) and recent techniques in deep learning to procure sentiment-related insights (LSTMs and CNNs). </p>
+                Neural Networks. We dive into various approaches to address deep sentiment analysis, splitting our article into three main sections: the many ways to represent text data (Featurization) and recent techniques in deep learning to procure sentiment-related insights (LSTMs and CNNs). </p>
 
             <h2>Featurization</h2>
             <h3>Encoding Representations</h3>
-            <p>In the research area of Deep Sentiment analysis, we start with a text file with nothing but words, and we know there is latent structure and meaning in their representation. We know that the ordering of words matters, the use of punctuation can convey strong feelings, and perhaps most importantly, word choice reveals a lot about sentiment. We also know that some words have positive or negative connotations with different levels of severity, and that words are related to each other in complex ways. How do we encode the plain text file that we recieve as relevant inputs to a deep learning model? NLP has created a variety of approaches to solve this problem.</p>
+            <p>In the research area of Deep Sentiment analysis, we start with a text file with nothing but words, and we know there is latent structure and meaning in their representation. We know that the ordering of words matters, the use of punctuation can convey strong feelings, and perhaps most importantly, word choice reveals a lot about sentiment. We also know that some words have positive or negative connotations with different levels of severity, and that words are related to each other in complex ways. How do we encode a plain text file with this information so it can serve as relevant inputs to a deep learning model? NLP has created a variety of approaches to solve this problem.</p>
             <ul>
                 <li><b>bag-of-words</b>: This approach only keeps the counts of each time each word appears, disregarding the grammar and order of the input data. It makes the strong assumption that words are independent of each other, and that word frequencies reveal everything we need to know about content. While this seems like we're losing a lot of information, this approach performs remarkably well as a baseline.</li><br>
-                <li><b>TF-IDF</b>: This acronym expands to "Term Frequency - Inverse Document Frequency" and is an expansion on traditional bag-of-words approaches. TF-IDF reflects “importance” of a word in a corpus by creating a metric that's based on the name -- the frequency of the word appearing over the total number of times it's mentioned across all documents.</li><br>
+                <li><b>TF-IDF</b>: This acronym expands to "Term Frequency - Inverse Document Frequency" and is an expansion on traditional bag-of-words approaches. TF-IDF reflects “importance” of a word to a document a corpus. It creates a metric that increases proportionally to number of times the word appears in a document, but is offset by the frequency of the word appearing over all documents.</li><br>
                 <li><b>n-gram encoding</b>: This is another expansion of bag-of-words, but considers more than one word at a time. If n=1, we have the same thing as the bag-of-words approach. If n=2, we're considering combinations of two words as a unique term in our document. For example, consider the sentence "Vinitra, Michael, and Stefan went to the park." ["Vinitra", "Michael"] would be a bigram, ["Michael", "and"] would be another bigram, and so on. </li><br>
                 <li><b>stop word removal</b>: This is an addendum to previous techniques mentioned above, and involves removing words that theoretically don't hold much meaning (i.e. "the", "an", "and", etc.). This provides the advantage of reducing the number of unique words in your data, and therefore the dimensionality of your vocabulary. However, the disadvantage here (although not super relevant to the problem of sentiment analysis) is that you might lose some relevant information about author style. The number of quotation marks and stopwords can be used to predict time period of writing / gender of author / other descriptive metadata. </li><br>
             </ul>
@@ -158,7 +147,7 @@
                 <li> <b> Skip-gram algorithm</b>: This algorithm trains each context afainst the word. The question it's asking is "Given this word, what are the words around it?"</li>
               </ul>
 
-            <p> For the default example, train the network by training the model for 500 iterations (pressing the green "500" button). Notice the relationship between "woman" and "queen" and "man" and "king" -- you'll find that they're the same distance apart, which shows that "woman":"queen" :: "man" : "king". Then perform Principal Component Analysis by pressing the "PCA" button. (PCA is just a way to reduce dimensions of our data and display them in relation to each other -- it optimizes for capturing the most information about the data in as few dimensions as possible).</p>
+            <p> For the default example, train the network by running the model for 500 iterations (pressing the green "500" button). Notice the relationship between "woman" and "queen" and "man" and "king" -- you'll find that they're the same distance apart, which shows that "woman":"queen" :: "man" : "king". Then perform Principal Component Analysis by pressing the "PCA" button. (PCA is just a way to reduce dimensions of our data and display them in relation to each other -- it optimizes for capturing the most information about the data in as few dimensions as possible).</p>
             <div hidden class="alert alert-danger" id="error"></div>
             <div class="row mt-5">
                 <div class="col-sm-8 no-padding">
@@ -252,7 +241,7 @@
         <script src="js/vector_math.js"></script>
         <script src="js/toyw2v.js"></script>
 
-        <p> Other than the relationship between words captured by Word2Vec, we find it important to give you a more visual picture of the how word vectors are usual. The visualization below was created by Tensorflow's Projector package using the 10K most popular words in the Google News dataset. Make sure to notice the relationships of words against each other in three dimensional space -- the reason that we're able to visualize them in 3-dimensional space instead of 300-dimensional space is because of the same PCA dimensionality reduction algorithm we mentioned earlier. </p>
+        <p> Other than the relationship between words captured by Word2Vec, we find it important to give you a more visual picture of the how word vectors are represented in a multidimensional space. The visualization below was created using Tensorflow's Projector package with the 10K most popular words in the Google News dataset. Make sure to notice the relationships of words against each other in three dimensional space -- the reason that we're able to visualize them in 3-dimensional space instead of 300-dimensional space is because of the same PCA dimensionality reduction algorithm we mentioned earlier. </p>
 
         <div class="text-center fig mt-5">
           <img id="tensorboard_gif" src="img/tensorboard_projector.gif"/>
@@ -260,7 +249,7 @@
         </div>
 
         <h3 class="mt-5">Tensor-Related Models After Word2Vec (Maas et. al, Mikolov et. al)</h3>
-        <p>Word2Vec made word embeddings incredibly accessible, and the world of Natural Language Processing saw paper after paper exploiting word embeddings. Some of them focused on the relationships of word embeddings as a reflection of modern society like in "Man is to Computer Programmer as Women is to Homemaker" by Bolukbasi et. al in 2016. Here we see the effect of gender bias on word embeddings, and how that can affect sentiment.</p>
+        <p>Word2Vec made word embeddings incredibly accessible, and the world of Natural Language Processing saw paper after paper exploiting new findings from word embeddings. Some of them focused on the relationships of word embeddings as a reflection of modern society like in "Man is to Computer Programmer as Women is to Homemaker" by Bolukbasi et. al in 2016. Here we see the effect of gender bias on word embeddings, and how that can affect sentiment.</p>
 
         <p> Some key papers came out soon after showing how word embeddings and other advances can improve sentiment analysis. Maas et. al presents a model that features metrics for semantic similarity and word sentiment on the IMDB dataset. Mikolov et. al presents a mathematical representation of skip-gram and bag-of-words models in a continuous space. </p>
 
