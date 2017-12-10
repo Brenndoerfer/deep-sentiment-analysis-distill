@@ -1,0 +1,56 @@
+.a1 {
+    float: left;
+    margin-top: 20px;
+}
+
+.ht {
+    width: 50px;
+    height: 60px;
+    margin-left: 50px;
+    background-color: #68C3A3;
+    border-radius: 3px;
+}
+
+.xt {
+    width: 80px;
+    height: 32px;
+    margin-left: -30px;
+    margin-top: 43px;
+    background-color: #19B5FE;
+    border-radius: 3px;
+}
+
+.out {
+    width: 80px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: 10px;
+}
+
+.softmax {
+    width: 100px;
+    height: 60px;
+    margin-left: 50px;
+    background-color: #F89406;
+    border-radius: 3px;
+}
+
+.classification {
+    width: 50px;
+    height: 60px;
+    margin-left: 50px;
+    background-color: transparent;
+    margin-top: -3px;
+    padding-left: 5px;
+}
+
+.wh {
+    position: absolute;
+    padding-left: 10px;
+}
+
+.wx {
+    position: absolute;
+    margin-left: -35px;
+    margin-top: 10px;
+}
