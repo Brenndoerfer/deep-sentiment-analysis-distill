@@ -1,7 +1,6 @@
-
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -15,295 +14,353 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script src="js/seqinput.js"></script>
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
     });
     </script>
     <style type="text/css">
-      p {
-        font-family: 'Gentium Book Basic', serif;
-        font-size: 20px;
-      }
-      .fig {
-         margin: 25px auto 50px auto;
-      }
-      .cap {
-        margin: 0 auto;
-      }
-      h2 {
-        margin-top: 50px;
-      }
-      h3 {
-        margin-top: 20px;
-      }
+        p {
+            font-family: 'Gentium Book Basic', serif;
+            font-size: 20px;
+        }
+
+        .fig {
+            margin: 25px auto 50px auto;
+        }
+
+        .cap {
+            margin: 0 auto;
+        }
+
+        h2 {
+            margin-top: 50px;
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
     </style>
     <script type="text/javascript">
-      
-      $(document).ready(function(){
-          $(".fig").hover(function(){
-            $(this).css("background-color", "pink");
-            }, function(){
-            $(this).css("background-color", "transparent");
-        });
-      });
+
+        //        $(document).ready(function () {
+        //            $(".fig").hover(function () {
+        //                $(this).css("background-color", "pink");
+        //            }, function () {
+        //                $(this).css("background-color", "transparent");
+        //            });
+//        })
+//        ;
 
     </script>
 
-  </head>
+</head>
 
-  <style>
-#slidecontainer {
-    width: 100%;
-}
+<style>
+    #slidecontainer {
+        width: 100%;
+    }
 
-.slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 25px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-}
+    .slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 25px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+    }
 
-.slider:hover {
-    opacity: 1;
-}
+    .slider:hover {
+        opacity: 1;
+    }
 
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    background: #4CAF50;
-    cursor: pointer;
-}
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        background: #4CAF50;
+        cursor: pointer;
+    }
 
-.slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    background: #4CAF50;
-    cursor: pointer;
-}
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #4CAF50;
+        cursor: pointer;
+    }
 </style>
 
-  <body style="background-color: #eee">
-    <div class="container" style="background-color: #fff; padding: 100px 150px;">
-      <div class="row">
+<body style="background-color: #eee">
+<div class="container" style="background-color: #fff; padding: 100px 150px;">
+    <div class="row">
         <div class="col-lg-12">
-        <img src="img/ucb.png" height="50" style="float:right; margin-top: -50px;" />
-          <center><h1>Deep Sentiment Analysis</h1>
+            <img src="img/ucb.png" height="50" style="float:right; margin-top: -50px;"/>
+            <center><h1>Deep Sentiment Analysis</h1>
 
-          <p><b>Michael Brenndoerfer*, Stefan Palombo*, Vinitra Swamy*</b><br>
-          	University of California, Berkeley <br>
-            Electrical Engineering and Computer Sciences (EECS)<br>
-            <font size="-1">*equal contribution, alphabetical order </font></p></center>
+                <p><b>Michael Brenndoerfer*, Stefan Palombo*, Vinitra Swamy*</b><br>
+                    University of California, Berkeley <br>
+                    Electrical Engineering and Computer Sciences (EECS)<br>
+                    <font size="-1">*equal contribution, alphabetical order </font></p></center>
             <hr style="margin: 50px 0">
 
-          <h2>Introduction</h2>
-          <p>How can a computer read a book? More importantly, how can a computer understand what it’s reading? </p>
+            <h2>Introduction</h2>
+            <p>How can a computer read a book? More importantly, how can a computer understand what it’s reading? </p>
 
-          <h3>Road Map</h3>
-          <p>Our review begins with describing the problem space of NLP with this very general question. We then introduce deep semantic analysis as an area of research inquiry that takes advantage of the recent leaps in computing from Neural Networks and deep learning to solve this problem. We dive into various approaches to address deep semantic analysis, splitting our article into the three main areas we saw in our literature review: Featurization, LSTMs, and CNNs. </p>
+            <h3>Road Map</h3>
+            <p>Our review begins with describing the problem space of NLP with this very general question. We then introduce deep semantic analysis as an area of research inquiry that takes advantage of the recent leaps in computing from
+                Neural Networks and deep learning to solve this problem. We dive into various approaches to address deep semantic analysis, splitting our article into the three main areas we saw in our literature review: Featurization,
+                LSTMs, and CNNs. </p>
 
-          <h2>Featurization</h2>
-          <h3>Encoding Representations</h3>
-           <p>In the problem of Deep Sentiment analysis, we start with a text file with nothing but words, and we know there is latent structure and meaning in the ordering of them and the punctuation used to separate them. How do we encode this representation? NLP has created a variety of approaches to solve this problem:</p>
+            <h2>Featurization</h2>
+            <h3>Encoding Representations</h3>
+            <p>In the problem of Deep Sentiment analysis, we start with a text file with nothing but words, and we know there is latent structure and meaning in the ordering of them and the punctuation used to separate them. How do we
+                encode this representation? NLP has created a variety of approaches to solve this problem:</p>
             <ul>
-              <li>bag-of-words: keeps only the counts of each time each word appears, disregarding grammar and order </li>
-              <li>TF-IDF: an expansion on bag-of-words, TF-IDF reflects “importance” of a word in a corpus by creating a term frequency-inverse document frequency metric</li>
-              <li>n-gram: bag-of-words, but considers n words at a time </li>
+                <li>bag-of-words: keeps only the counts of each time each word appears, disregarding grammar and order</li>
+                <li>TF-IDF: an expansion on bag-of-words, TF-IDF reflects “importance” of a word in a corpus by creating a term frequency-inverse document frequency metric</li>
+                <li>n-gram: bag-of-words, but considers n words at a time</li>
             </ul>
-          <h3>Word Embeddings</h3>
-           <p>Word embeddings are vector generated to represent words, usually trained using neural networks. This boosts performance for sentiment analysis immensely. Word2Vec is a Google package that uses 2-layer NNs and the skip-gram / CBOW algorithms to train embeddings.</p>
-          <div class="text-center fig">
-          <img src="img/3.png" class="img-center" width="800" />
-          <br>
-          <small>Figure 1: Word2Vec Explanation</small>
-          </div>
+            <h3>Word Embeddings</h3>
+            <p>Word embeddings are vector generated to represent words, usually trained using neural networks. This boosts performance for sentiment analysis immensely. Word2Vec is a Google package that uses 2-layer NNs and the skip-gram /
+                CBOW algorithms to train embeddings.</p>
+            <div class="text-center fig">
+                <img src="img/3.png" class="img-center" width="800"/>
+                <br>
+                <small>Figure 1: Word2Vec Explanation</small>
+            </div>
 
-          <p> For the default example, train the network by training the model for 500 iterations (pressing the green "500" button) and observing the relationship between "woman" and "queen" and "man" and "king". </p>
-          <div hidden class="alert alert-danger" id="error"></div>
+            <p> For the default example, train the network by training the model for 500 iterations (pressing the green "500" button) and observing the relationship between "woman" and "queen" and "man" and "king". </p>
+            <div hidden class="alert alert-danger" id="error"></div>
             <div class="row">
-              <div class="col-sm-8 no-padding">
-                <div class="panel panel-default">
-                  <center> <div class="panel-heading">Neurons</div>
-                  <div class="panel-body">
-                    <div id="neuron-vis"></div>
-                    <div>
-                      <p> Training iterations:</p>
-                      <div class="btn-group">
-                        <button class="btn btn-success" id="btn-next">Next</button>
-                        <button class="btn btn-success" id="btn-next20">20</button>
-                        <button class="btn btn-success" id="btn-next100">100</button>
-                        <button class="btn btn-success" id="btn-next500">500</button>
-                        <button class="btn btn-success" id="btn-pca">PCA</button>
-                      </div>
-                      <br>
-                      <br>
-                      <button class="btn btn-primary" id="btn-restart">Update and Restart</button>
-                      <button class="btn btn-primary" id="btn-learning-rate">Update Learning Rate</button>
-                      <br>
-                      <br>
+                <div class="col-sm-8 no-padding">
+                    <div class="panel panel-default">
+                        <center>
+                            <div class="panel-heading">Neurons</div>
+                            <div class="panel-body">
+                                <div id="neuron-vis"></div>
+                                <div>
+                                    <p> Training iterations:</p>
+                                    <div class="btn-group">
+                                        <button class="btn btn-success" id="btn-next">Next</button>
+                                        <button class="btn btn-success" id="btn-next20">20</button>
+                                        <button class="btn btn-success" id="btn-next100">100</button>
+                                        <button class="btn btn-success" id="btn-next500">500</button>
+                                        <button class="btn btn-success" id="btn-pca">PCA</button>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <button class="btn btn-primary" id="btn-restart">Update and Restart</button>
+                                    <button class="btn btn-primary" id="btn-learning-rate">Update Learning Rate</button>
+                                    <br>
+                                    <br>
+                                </div>
+                            </div>
+                        </center>
                     </div>
-                  </div>
-                </center>
-                </div>
-              </div>  <!-- end of top left-panel -->
+                </div>  <!-- end of top left-panel -->
 
-              <div class="col-sm-4 no-padding">
-                <div class="panel panel-default">
-                  <center><div class="panel-heading">Control Panel</div></center>
-                  <p><font size=-1>These are the visualization inputs! You can change the input data in "Training Data"
-                  and the number of hidden layers/learning rate in configurations.</font></p>
-                  <div class="panel-body">
-                    <div>
-                      <p>Neural Network Configurations:</p>
-                      <textarea rows="4" id="config-text"></textarea>
-                      <br>
+                <div class="col-sm-4 no-padding">
+                    <div class="panel panel-default">
+                        <center>
+                            <div class="panel-heading">Control Panel</div>
+                        </center>
+                        <p><font size=-1>These are the visualization inputs! You can change the input data in "Training Data"
+                            and the number of hidden layers/learning rate in configurations.</font></p>
+                        <div class="panel-body">
+                            <div>
+                                <p>Neural Network Configurations:</p>
+                                <textarea rows="4" id="config-text"></textarea>
+                                <br>
+                            </div>
+                            <div>
+                                <p>Training data (context|target):</p>
+                                <textarea rows="4" id="input-text"></textarea>
+                                <br>
+                            </div>
+                            <div>
+                                <p>Presets: </p>
+                                <select id="sel-presets"></select>
+                                <br>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                      <p>Training data (context|target):</p>
-                      <textarea rows="4" id="input-text"></textarea>
-                      <br>
-                    </div>
-                    <div>
-                      <p>Presets: </p>
-                      <select id="sel-presets"></select>
-                      <br>
-                    </div>
-                  </div>
-                </div>
-              </div> <!-- end of top left-panel -->
+                </div> <!-- end of top left-panel -->
 
             </div>  <!-- end of top row-->
             <hr>
             <div class="row">
-              <div class="col-sm-6 no-padding">
-                <div class="panel panel-default">
-                  <center><div class="panel-heading">Weight Matrices</div></center>
-                  <div class="panel-body">
-                    <div id="heatmap-vis"></div>
-                  </div>
-                </div>
-              </div>  <!-- end of lower left panel-->
-              <div class="col-sm-6 no-padding">
-                <div class="panel panel-default">
-                  <center><div class="panel-heading">Vectors</div></center>
-                  <div class="panel-body">
-                    <div id="scatterplot-vis"></div>
-                  </div>
-                </div>
-              </div>  <!-- end of lower-right panel-->
+                <div class="col-sm-6 no-padding">
+                    <div class="panel panel-default">
+                        <center>
+                            <div class="panel-heading">Weight Matrices</div>
+                        </center>
+                        <div class="panel-body">
+                            <div id="heatmap-vis"></div>
+                        </div>
+                    </div>
+                </div>  <!-- end of lower left panel-->
+                <div class="col-sm-6 no-padding">
+                    <div class="panel panel-default">
+                        <center>
+                            <div class="panel-heading">Vectors</div>
+                        </center>
+                        <div class="panel-body">
+                            <div id="scatterplot-vis"></div>
+                        </div>
+                    </div>
+                </div>  <!-- end of lower-right panel-->
             </div>  <!-- end of bottom row -->
-          <br>
-          <center><small>Figure 2: Interactive Embedding Visualization</small>
-          <br>
-          <small>Based on ronxin's Word Embedding Visual Inspector</small></center>
-          </div>  <!-- end of container -->
+            <br>
+            <center>
+                <small>Figure 2: Interactive Embedding Visualization</small>
+                <br>
+                <small>Based on ronxin's Word Embedding Visual Inspector</small>
+            </center>
+        </div>  <!-- end of container -->
 
-          <script src="js/jquery-2.1.3.min.js"></script>
-          <script src="js/bootstrap.min.js"></script>
-          <script src="js/d3.v3.min.js"></script>
-          <script src="js/assert.js"></script>
-          <script src="js/pca.js"></script>
-          <script src="js/vector_math.js"></script>
-          <script src="js/toyw2v.js"></script>
+        <script src="js/jquery-2.1.3.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/d3.v3.min.js"></script>
+        <script src="js/assert.js"></script>
+        <script src="js/pca.js"></script>
+        <script src="js/vector_math.js"></script>
+        <script src="js/toyw2v.js"></script>
 
-          <h3>Tensor-Related Models After Word2Vec (Maas et. al, Mikolov et. al)</h3>
-          <p>Maas presents a model that features metrics for semantic similarity and word sentiment on the IMDB dataset, and Mikolov presents a mathematical representation of skip-gram and bag-of-words models in a continuous space. </p>
+        <h3>Tensor-Related Models After Word2Vec (Maas et. al, Mikolov et. al)</h3>
+        <p>Maas presents a model that features metrics for semantic similarity and word sentiment on the IMDB dataset, and Mikolov presents a mathematical representation of skip-gram and bag-of-words models in a continuous space. </p>
 
 
-          <h2>Recurrent Neural Nets</h2>
-          <p>In the previous section we learned about word embeddings, and that this technique allows us to have a vector-based representation of words, which is able to capture the complex syntax and semantics of a language. Also, we know that classical Artificial Neural Networks (ANN) perform operations on vectors and matrices. So, how can we leverage this knowledge for sentiment analysis tasks?</p>
-          <p>In fact, sentences are just a sequence of words, and sentiment analysis is basically the task of classifying certain sequences of words as certain types of sentiment. Thus, we need to use a technique that allows us to process a sequence based input and assign a specific class. The solution is Recurrent Neural Networks (RNN). We will assume that you know what a regular, fully-connected feed-forward neural network is, and how it works. </p>
-          <p>Classical neural networks are feed-forward networks that have inputs, potentially multiple hidden layers, and outputs. Such a feed-forward network can only take a certain window of words into consideration, whereas “recurrent neural networks can take into account all of the predecessor words” \cite{Sundermeyer}. This works because with RNNs, each element of the input sequence is assigned to a specific timestep of the RNN. This sequential approach allows the network to capture the temporal aspect of the input sequence. Fig.1 depicts the sequential input and processing. </p>
-           <div class="text-center fig">
-          <img src="img/1.png" class="img-center" width="800" />
-          <br>
-          <small>Figure 1: Random test caption</small>
-          </div>
-          <p>All the words in the sequence are highly dependent on each other. As depicted in Fig 3, every word is an input at a specific timestep of the sequence, and every timestep has a hidden state $h_t$ that tries to encode the previously-seen information. Additionally, at every timestep a weight matrix $W_X$, which is different for every timestep, gets multiplied with the current input $x_t$, where $x_t$ represents the current encoded word. $W^H$ is a recurrent weight matrix. This basically means that it stays the same, from the input to the output, but the weights still get updated at every timestep. The goal of $W_H$ is to encapsulate all information across all timesteps. The final hidden state is then fed into a softmax function, which gives a predicted class. The weight matrices within the RNN "are updated through an optimization process called backpropagation through time."</p>
-          <p>Given the formula (Fig 3), used to compute the hidden state $h_t$ at every timestep $t$, we can identify two problems considering different value settings. For example, when $W^H$ has big values, and $W^X$ has small ones, $h_t$ is going to be significantly impacted by $H_(t-1)$. Non mathematically speaking, the current hidden state vector is not very dependent on the previous step. In the context of an input sequence of words, the current word would have no significant relationship to/ contextual dependence on the previous one.</p>
-          <div class="text-center fig">
-          <img src="img/3.png" class="img-center" width="800" />
-          <br>
-          <small>Figure 1: Random test caption</small>
-          </div>
-          
-          <p>Thinking about the above-described situation and considering how backpropagation works (weights are updated based on the gradients of the error with respect to the current weight \cite{Hecht-Nielsen1989} ), we can identify two problems. If elements early in the sequence cause the value of the hidden state to become too big, this is going to over-saturate the gradient. This is  known as the exploding gradient problem, in which the elements will have an unproportionally high importance. The same thing can occur when a gradient is very small and converges to zero during backpropagation. This then causes the cell to die, known as the vanishing gradient problem. Due to this vanishing and exploding gradient problem, RNNs are harder to train than NNs. This problem also exists in feed-forward networks, but impacts RNNs even more because they are basically larger and deeper feed-forward networks with a cycle.</p>
-          
-          <h2>Long Short-Term Memory</h2>
-          <p>Long Short-Term Memory (LSTM) is a recurrent neural network (RNN) architecture and was already proposed by Hofreiter in 1997. The idea is that the hidden states of the RNN get replaced by so-called LSTM modules, which have four different gates. These gates handle the in- and output, improving the vanishing and exploding gradient problem, as well as allowing the network to "encapsulate information about long-term dependencies in the text". The problem is that a regular RNN is not able to connect previously-occurring information to a later-occurring input. </p>
-          
-          <p>As previously mentioned, the LSTM module has four components (sometimes referred to as gates), often denoted as input, output, and forget gate, as well as a memory module. The input is still denoted as $x_t$, but the LSTM requires $x_t$ and $h_(t-1)$ as input (the output of the previous state). The output will be the more complexly established hidden state $h_t$. Briefly speaking, "the input gate determines how much emphasis to put on each of the inputs, the forget gate determines the information that we'll throw away, and the output gate determines the final $h_t$ based on the intermediate states".</p>
-          
-          <div class="text-center fig">
-          <img src="img/4.png" class="img-center" width="800" />
-          <br>
-          <small>Figure 1: Random test caption</small>
-          </div>
-          <p>additional gate explanation + graphics</p>
+        <h2>Recurrent Neural Nets</h2>
+        <p>In the previous section we learned about word embeddings, and that this technique allows us to have a vector-based representation of words, which is able to capture the complex syntax and semantics of a language. Also, we know
+            that classical Artificial Neural Networks (ANN) perform operations on vectors and matrices. So, how can we leverage this knowledge for sentiment analysis tasks?</p>
+        <p>In fact, sentences are just a sequence of words, and sentiment analysis is basically the task of classifying certain sequences of words as certain types of sentiment. Thus, we need to use a technique that allows us to process a
+            sequence based input and assign a specific class. The solution is Recurrent Neural Networks (RNN). We will assume that you know what a regular, fully-connected feed-forward neural network is, and how it works. </p>
+        <p>Classical neural networks are feed-forward networks that have inputs, potentially multiple hidden layers, and outputs. Such a feed-forward network can only take a certain window of words into consideration, whereas “recurrent
+            neural networks can take into account all of the predecessor words” \cite{Sundermeyer}. This works because with RNNs, each element of the input sequence is assigned to a specific timestep of the RNN. This sequential approach
+            allows the network to capture the temporal aspect of the input sequence. Fig.1 depicts the sequential input and processing. </p>
 
-          <p>To conclude, deep sentiment analysis using LSTMs (or RNNs) consists of taking an input sequence and determining what kind of sentiment the text has. This could be simply determining if the input is positive or negative, or you could look at it in more detail, classifying into categories, such as funny, sad, angry, excited, etc.</p>
-          <p></p>
-          <p></p>
-          <h2>Convolutional Neural Nets</h2>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
-          <p>Drag the slider to change the number of rows in the first and second filter.</p>
-          <div id="slidecontainer">
+        <div class="col-lg-12">
+        <div class="text-center fig col-lg-10">
+            <div class="seq-input">
+                <h3>Example input sequence</h3>
+                <div class="input-group mb-4">
+                  <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button">Input sequence</button>
+                  </span>
+                    <input type="text" class="form-control" placeholder="Sentence ..." id="in-sentence" style="min-width: 400px">
+                </div>
+                <div class="seq-output">
+
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="text-center fig">
+        <small>Figure 1: Structure of an input sequence</small>
+        </div>
+
+        <p>All the words in the sequence are highly dependent on each other. As depicted in Fig 3, every word is an input at a specific timestep of the sequence, and every timestep has a hidden state $h_t$ that tries to encode the
+            previously-seen information. Additionally, at every timestep a weight matrix $W_X$, which is different for every timestep, gets multiplied with the current input $x_t$, where $x_t$ represents the current encoded word. $W^H$ is a
+            recurrent weight matrix. This basically means that it stays the same, from the input to the output, but the weights still get updated at every timestep. The goal of $W_H$ is to encapsulate all information across all timesteps.
+            The final hidden state is then fed into a softmax function, which gives a predicted class. The weight matrices within the RNN "are updated through an optimization process called backpropagation through time."</p>
+        <p>Given the formula (Fig 3), used to compute the hidden state $h_t$ at every timestep $t$, we can identify two problems considering different value settings. For example, when $W^H$ has big values, and $W^X$ has small ones, $h_t$
+            is going to be significantly impacted by $H_(t-1)$. Non mathematically speaking, the current hidden state vector is not very dependent on the previous step. In the context of an input sequence of words, the current word would
+            have no significant relationship to/ contextual dependence on the previous one.</p>
+        <div class="text-center fig">
+            <img src="img/3.png" class="img-center" width="800"/>
+            <br>
+            <small>Figure 1: Random test caption</small>
+        </div>
+
+        <p>Thinking about the above-described situation and considering how backpropagation works (weights are updated based on the gradients of the error with respect to the current weight \cite{Hecht-Nielsen1989} ), we can identify two
+            problems. If elements early in the sequence cause the value of the hidden state to become too big, this is going to over-saturate the gradient. This is known as the exploding gradient problem, in which the elements will have an
+            unproportionally high importance. The same thing can occur when a gradient is very small and converges to zero during backpropagation. This then causes the cell to die, known as the vanishing gradient problem. Due to this
+            vanishing and exploding gradient problem, RNNs are harder to train than NNs. This problem also exists in feed-forward networks, but impacts RNNs even more because they are basically larger and deeper feed-forward networks with a
+            cycle.</p>
+
+        <h2>Long Short-Term Memory</h2>
+        <p>Long Short-Term Memory (LSTM) is a recurrent neural network (RNN) architecture and was already proposed by Hofreiter in 1997. The idea is that the hidden states of the RNN get replaced by so-called LSTM modules, which have four
+            different gates. These gates handle the in- and output, improving the vanishing and exploding gradient problem, as well as allowing the network to "encapsulate information about long-term dependencies in the text". The problem
+            is that a regular RNN is not able to connect previously-occurring information to a later-occurring input. </p>
+
+        <p>As previously mentioned, the LSTM module has four components (sometimes referred to as gates), often denoted as input, output, and forget gate, as well as a memory module. The input is still denoted as $x_t$, but the LSTM
+            requires $x_t$ and $h_(t-1)$ as input (the output of the previous state). The output will be the more complexly established hidden state $h_t$. Briefly speaking, "the input gate determines how much emphasis to put on each of the
+            inputs, the forget gate determines the information that we'll throw away, and the output gate determines the final $h_t$ based on the intermediate states".</p>
+
+        <div class="text-center fig">
+            <img src="img/4.png" class="img-center" width="800"/>
+            <br>
+            <small>Figure 1: Random test caption</small>
+        </div>
+        <p>additional gate explanation + graphics</p>
+
+        <p>To conclude, deep sentiment analysis using LSTMs (or RNNs) consists of taking an input sequence and determining what kind of sentiment the text has. This could be simply determining if the input is positive or negative, or you
+            could look at it in more detail, classifying into categories, such as funny, sad, angry, excited, etc.</p>
+        <p></p>
+        <p></p>
+        <h2>Convolutional Neural Nets</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+            type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+            Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        <p>
+        <p>Drag the slider to change the number of rows in the first and second filter.</p>
+        <div id="slidecontainer">
             <input type="range" min="1" max="5" value="3" class="slider" id="firstFilter">
             <p>Rows in first filter: <span id="numRow1"></span></p>
-          </div>
+        </div>
 
-          <div id="slidecontainer2">
+        <div id="slidecontainer2">
             <input type="range" min="1" max="3" value="2" class="slider" id="secFilter">
             <p>Rows in second filter: <span id="numRow2"></span></p>
-          </div>
-          <img id="img" src="img/conv_interact/32.jpg"/>
-          <script>
-          var slider1 = document.getElementById("firstFilter");
-          var slider2 = document.getElementById("secFilter");
-          var rows1 = document.getElementById("numRow1");
-          var rows2 = document.getElementById("numRow2");
-          var slide1val = slider1.value;
-          var slide2val = slider2.value;
-          rows1.innerHTML = slider1.value;
-          rows2.innerHTML = slider2.value;
-
-          function test(s1val, s2val){
+        </div>
+        <img id="img" src="img/conv_interact/32.jpg"/>
+        <script>
+            var slider1 = document.getElementById("firstFilter");
+            var slider2 = document.getElementById("secFilter");
+            var rows1 = document.getElementById("numRow1");
+            var rows2 = document.getElementById("numRow2");
+            var slide1val = slider1.value;
+            var slide2val = slider2.value;
             rows1.innerHTML = slider1.value;
             rows2.innerHTML = slider2.value;
-           document.getElementById("img").src="img/conv_interact/"+s1val+s2val+".jpg"
-              
-          }
 
-          slider2.oninput = function() {
-              slide2val = slider2.value
-              slide1val = slider1.value
-              test(slide1val, slide2val)
-             
-          }
+            function test(s1val, s2val) {
+                rows1.innerHTML = slider1.value;
+                rows2.innerHTML = slider2.value;
+                document.getElementById("img").src = "img/conv_interact/" + s1val + s2val + ".jpg"
 
-          slider1.oninput = function() {
-              slide2val = slider2.value
-              slide1val = slider1.value
-              test(slide1val, slide2val)
-          }
+            }
 
-          </script>
+            slider2.oninput = function () {
+                slide2val = slider2.value
+                slide1val = slider1.value
+                test(slide1val, slide2val)
 
-          <h3>Subsection 1.1</h3>
-          <h2>References</h2>
-          <p>Felix A Gers, Nicol N Schraudolph, and Jürgen Schmidhuber. Learning Precise Timing with LSTM Recurrent Networks. Journal of Machine Learning Research, 3:115–143, 2002. URL http://machinelearning.wustl.edu/mlpapers/paper{_}files/GersSS02.pdf.</p>
-          <p>Alex Graves. Generating Sequences With Recurrent Neural Networks. 2014. URL https://arxiv. org/pdf/1308.0850v5.pdf.
-          Karol Gregor, Ivo Danihelka, Alex Graves, Danilo Jimenez Rezende, and Daan Wierstra. DRAW: A Recurrent Neural Network For Image Generation. 2015. URL https://arxiv.org/pdf/ 1502.04623v2.pdf.</p>
-          <p>Hecht-Nielsen. Theory of the backpropagation neural network. In International Joint Conference on Neural Networks, pages 593–605 vol.1. IEEE, 1989. doi: 10.1109/IJCNN.1989.118638. URL http://ieeexplore.ieee.org/document/118638/.</p>
+            }
 
-        </div>
-      </div>
+            slider1.oninput = function () {
+                slide2val = slider2.value
+                slide1val = slider1.value
+                test(slide1val, slide2val)
+            }
+
+        </script>
+
+        <h3>Subsection 1.1</h3>
+        <h2>References</h2>
+        <p>Felix A Gers, Nicol N Schraudolph, and Jürgen Schmidhuber. Learning Precise Timing with LSTM Recurrent Networks. Journal of Machine Learning Research, 3:115–143, 2002. URL
+            http://machinelearning.wustl.edu/mlpapers/paper{_}files/GersSS02.pdf.</p>
+        <p>Alex Graves. Generating Sequences With Recurrent Neural Networks. 2014. URL https://arxiv. org/pdf/1308.0850v5.pdf.
+            Karol Gregor, Ivo Danihelka, Alex Graves, Danilo Jimenez Rezende, and Daan Wierstra. DRAW: A Recurrent Neural Network For Image Generation. 2015. URL https://arxiv.org/pdf/ 1502.04623v2.pdf.</p>
+        <p>Hecht-Nielsen. Theory of the backpropagation neural network. In International Joint Conference on Neural Networks, pages 593–605 vol.1. IEEE, 1989. doi: 10.1109/IJCNN.1989.118638. URL
+            http://ieeexplore.ieee.org/document/118638/.</p>
+
     </div>
-  </body>
+</div>
+</div>
+</body>
 </html>
