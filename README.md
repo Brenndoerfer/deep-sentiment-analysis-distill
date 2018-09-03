@@ -5,6 +5,7 @@
 
 # Collaborators 
 Michael Brenndoerfer*, Stefan Palombo*, Vinitra Swamy*
+
 UC Berkeley Electrical Engineering and Computer Sciences (EECS)
 *equal contribution, alphabetical order 
 
